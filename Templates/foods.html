@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container">
+    <h1 align='center'>ตารางอาหาร</h1>
+    <table class="table table-borderde">
+        <thead>
+            <tr>
+                <th>ลำดับ</th>
+                <th>ชื่ออาหาร</th>
+                <th>วัถตุดิบโปรตีน</th>
+                <th>วัถตุดิบคาร์โบไฮเดรต</th>
+                <th>วัถตุดิบไขมัน</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in data %}
+            <tr>
+                <td>{{row.0}}</td>
+                <td>{{row.1}}</td>
+                <td>{{row.2}}</td>
+                <td>{{row.3}}</td>
+                <td>{{row.4}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock content %}
