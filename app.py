@@ -4,78 +4,46 @@ import pymysql
 from forms import RegistrationForm, LoginForm
 
 app = Flask(__name__)
-#app.config['DEBUG'] = True
-#app.config['SECRET_KEY'] = 'Thaksin'
 
 #connect to DB
 conn = pymysql.connect('localhost','root','','memberdb')
 conn1 = pymysql.connect('localhost','root','','fooddb')
 
-#Frintpage
+#Home Page
 @app.route("/")
 def index():
     return render_template('index.html')
 
-@app.route("/home", methods=['POST','GET'], defaults={'name' : 'Default'})
-@app.route("/home/<string:name>", methods=['POST','GET'])
-def home(name):
-    return '<h1>Hello {} </h1>'.format(name)
-
-@app.route("/json")
-def json():
-    return jsonify({'key' : 'value', 'listkey' : [1,2,3]})
-
-@app.route("/query")
-def query():
-    name = request.args.get('name')
-    location = request.args.get('location')
-    return '<h1>Hi : {} location : {} </h1>'.format(name,location)
-
-@app.route("/theform", methods=['GET','POST'])
-def theform():
-
-    if request.method == 'GET':
-        return '''<form method="POST" action="/theform">
-                    <input type="text" name="name">
-                    <input type="text" name="location">
-                    <input type="submit" value="Submit">
-                    </form>'''
-    else:
-        name = request.form['name']
-        location = request.form['location']
-
-        return 'hi {} location {}'.format(name,location)
-
-@app.route("/process", methods=['POST'])
-def process():
-    name = request.form['name']
-    location = request.form['location']
-    return 'hi {} location {}'.format(name,location)
-
-@app.route("/processjson")
-def processjson():
-    data = request.get_json()
-    name = data['name']
-    location = data['location']
-    randomlist = data['randomlist']
-    return jsonify({'result' : 'Success', 'name' : name, 'location' : location, 'randomkeylist' : randomlist[1]})
-
 #Login Page
 @app.route("/login")
 def login():
-    forms = LoginForm()
-    return render_template('login.html', form=forms, title='Login Page')
+    return render_template('login.html')
+
+#Register Page
+@app.route("/register")
+def register():
+    return render_template('register.html')
+
+#Forgot-Password page
+@app.route("/forgotpassword")
+def forgotpassword():
+    return render_template('forgotpassword.html')
+
+#404 page
+@app.route("/404")
+def error404():
+    return render_template('404.html')
 
 #About Page
 @app.route("/about")
 def about():
     return render_template('about.html')
 
-#Register page
-@app.route("/register")
-def register():
-    forms = RegistrationForm()
-    return render_template('register.html', form=forms, title='Register Page')
+#Calculate
+@app.route("/calculate")
+def calculate():
+    return render_template('calculate.html')
+
 
 #add data member page
 @app.route("/member")
@@ -173,6 +141,53 @@ def insert_ingedients():
             cursor.execute(sql,(ingedients_name,nutrients_group,p,c,f))
             conn1.commit()
         return redirect(url_for('ingedients'))
+
+
+
+@app.route("/home", methods=['POST','GET'], defaults={'name' : 'Default'})
+@app.route("/home/<string:name>", methods=['POST','GET'])
+def home(name):
+    return '<h1>Hello {} </h1>'.format(name)
+
+@app.route("/json")
+def json():
+    return jsonify({'key' : 'value', 'listkey' : [1,2,3]})
+
+@app.route("/query")
+def query():
+    name = request.args.get('name')
+    location = request.args.get('location')
+    return '<h1>Hi : {} location : {} </h1>'.format(name,location)
+
+@app.route("/theform", methods=['GET','POST'])
+def theform():
+
+    if request.method == 'GET':
+        return '''<form method="POST" action="/theform">
+                    <input type="text" name="name">
+                    <input type="text" name="location">
+                    <input type="submit" value="Submit">
+                    </form>'''
+    else:
+        name = request.form['name']
+        location = request.form['location']
+
+        return 'hi {} location {}'.format(name,location)
+
+@app.route("/process", methods=['POST'])
+def process():
+    name = request.form['name']
+    location = request.form['location']
+    return 'hi {} location {}'.format(name,location)
+
+@app.route("/processjson")
+def processjson():
+    data = request.get_json()
+    name = data['name']
+    location = data['location']
+    randomlist = data['randomlist']
+    return jsonify({'result' : 'Success', 'name' : name, 'location' : location, 'randomkeylist' : randomlist[1]})
+
 
 #Debug Code
 if __name__ == "__main__":
