@@ -68,10 +68,30 @@
                                             Login
                                         </a>
                                         <hr>
-                                        <div class="g-signin2" data-onsuccess="onSignIn"></div>
-                                        <!--<a href="{{ url_for('index') }}" class="btn btn-google btn-user btn-block">
-                                            <i class="fab fa-google fa-fw"></i> Login with Google-->
-                                        </a>
+
+                                        <div id="my-signin2"></div>
+                                        <script>
+                                            function onSuccess(googleUser) {
+                                                console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
+                                            }
+                                            function onFailure(error) {
+                                                console.log(error);
+                                            }
+                                            function renderButton() {
+                                                gapi.signin2.render('my-signin2', {
+                                                    'scope': 'profile email',
+                                                    'width': 240,
+                                                    'height': 50,
+                                                    'longtitle': true,
+                                                    'theme': 'dark',
+                                                    'onsuccess': onSuccess,
+                                                    'onfailure': onFailure
+                                                });
+                                            }
+                                        </script>
+
+                                        
+
                                         <a href="{{ url_for('index') }}" class="btn btn-facebook btn-user btn-block">
                                             <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
                                         </a>
@@ -107,6 +127,8 @@
     <!-- Custom scripts for all pages-->
 
     <script src="{{ url_for('static',filename='js/sb-admin-2.min.js') }}"></script>
+
+    <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
 
 </body>
 

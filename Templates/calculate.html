@@ -1,125 +1,146 @@
 {% extends "layout.html" %}
 {% block content %}
+<section class="bg-light page-section">
+  <div class="col-lg-12 text-center">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <div class="container-fluid">
+          <div class="row no-gutter">
+            <div class="container">
+              <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                  <div class="container">
+                    <form class="form-horizontal form-pricing" role="form">
 
-<div class="container-fluid">
+                      <!---------------------โปรตีน amount----------------------------------->
 
-  <!-- 404 Error Text -->
-
-  <header>
-    <div class="container">
-      <div class="card shadow mb-4">
-        <div class="card-header py-3">
-          <div class="container">
-            <form class="form-horizontal form-pricing" role="form">
-
-              <!------------------------------โปรตีน------------------------------>
-
-              <div class="price-slider">
-                <h4 class="great">โปรตีน</h4>
-                <span>โปรดรับประทานแต่พอดี</span>
-                <div class="col-sm-12">
-                  <div id="slider"></div>
-                  <br>
-                  <div class="form-group">
-                    <label for="amount" class="col-sm-6 control-label">จำนวล (g.): </label>
-                    <span class="help-text">Please choose your protein</span>
-                    <div class="col-sm-6">
-                      <input type="hidden" id="amount" class="form-control">
-                      <p class="price lead" id="amount-label"></p>
-                      <span class="price">.00</span>
-                    </div>
-                  </div>
-
-                  <!------------------------------โปรตีน------------------------------>
-
-                  <!------------------------------คาร์โบไฮเดรต------------------------------>
-
-                  <div class="price-slider">
-                    <h4 class="great">คาร์โบไฮเดรต</h4>
-                    <span>โปรดรับประทานแต่พอดี</span>
-                    <div class="col-sm-12">
-                      <div id="slider2"></div>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="duration" class="col-sm-6 control-label">จำนวล (g.): </label>
-                    <span class="help-text">Please choose your Carbohydrate</span>
-                    <div class="col-sm-6">
-                      <input type="hidden" id="duration" class="form-control">
-                      <p class="price lead" id="duration-label"></p>
-                      <span class="price">.00</span>
-                    </div>
-                  </div>
-
-                  <!------------------------------คาร์โบไฮเดรต------------------------------>
-
-                  <!------------------------------ไขมัน------------------------------>
-
-                  <div class="price-slider">
-                    <h4 class="great">ไขมัน</h4>
-                    <span>โปรดรับประทานแต่พอดี</span>
-                    <div class="col-sm-12">
-                      <div id="slider3"></div>
-                      <br>
-                      <div class="form-group">
-                        <label for="fat" class="col-sm-6 control-label">จำนวล (g.): </label>
-                        <span class="help-text">Please choose your fat </span>
-                        <div class="col-sm-6">
-                          <input type="hidden" id="fat" class="form-control">
-                          <p class="price lead" id="fat-label"></p>
-                          <span class="price">.00</span>
+                      <div class="price-slider">
+                        <div class="btn-group  float-left ">
+                          <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            Action
+                          </button>
+                          <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Separated link</a>
+                          </div>
                         </div>
-                      </div>
+                        <h4 class="great">โปรตีน</h4>
 
-                      <!------------------------------ไขมัน------------------------------>
+                        <span>โปรดรับประทานแต่พอดี</span>
+                        <div class="col-sm-12">
+                          <div id="slider"></div>
+                          <br>
+                          <div class="form-group">
+                            <label for="amount" class="col-sm-6 control-label">จำนวล (g.): </label>
+                            <span class="help-text">Please choose your protein</span>
+                            <div class="col-sm-6">
+                              <input type="hidden" id="amount" class="form-control">
+                              <p class="price lead" id="amount-label"></p>
+                              <span class="price"></span>
+                            </div>
+                          </div>
 
-                      <!------------------------------ผลลัพธ์------------------------------>
+                          <!---------------------โปรตีน------------------------------------>
 
-                      <div class="form-group">
-                        <div>
-                        </div>
-                        <hr class="style">
-                        <div class="form-group total">
-                          <label for="total" class="col-sm-6 control-label"><strong>ผลรวม: </strong></label>
-                          <span class="help-text">(Protein + carbohydrates + fat)</span>
-                          <div class="col-sm-6">
+                          <!---------------------คาร์โบไฮเดรต-duration----------------------------------->
 
-                            <input type="hidden" id="total" class="form-control">
-                            <p class="price lead" id="total-label"></p>
-                            <span class="price">.00</span>
+                          <div class="price-slider">
+                            <div class="btn-group  float-left ">
+                              <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                Action
+                              </button>
+                              <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="#">Another action</a>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Separated link</a>
+                              </div>
+                            </div>
+                            <h4 class="great">คาร์โบไฮเดรต</h4>
+                            <span>โปรดรับประทานแต่พอดี</span>
+                            <div class="col-sm-12">
+                              <div id="slider2"></div>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label for="duration" class="col-sm-6 control-label">จำนวล (g.): </label>
+                            <span class="help-text">Please choose your Carbohydrate</span>
+                            <div class="col-sm-6">
+                              <input type="hidden" id="duration" class="form-control">
+                              <p class="price lead" id="duration-label"></p>
+                              <span class="price"></span>
+                            </div>
+                          </div>
+
+                          <!---------------------คาร์โบไฮเดรต------------------------------------>
+
+                          <!---------------------fat------------------------------------>
+
+                          <div class="price-slider">
+                            <div class="btn-group  float-left ">
+                              <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                Action
+                              </button>
+                              <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="#">Another action</a>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Separated link</a>
+                              </div>
+                            </div>
+                            <h4 class="great">ไขมัน</h4>
+                            <span>โปรดรับประทานแต่พอดี</span>
+                            <div class="col-sm-12">
+                              <div id="slider3"></div>
+                              <br>
+                              <div class="form-group">
+                                <label for="fat" class="col-sm-6 control-label">จำนวล (g.): </label>
+                                <span class="help-text">Please choose your fat </span>
+                                <div class="col-sm-6">
+                                  <input type="hidden" id="fat" class="form-control">
+                                  <p class="price lead" id="fat-label"></p>
+                                  <span class="price"> </span>
+                                </div>
+                              </div>
+
+                              <!---------------------fat------------------------------------>
+
+                              <!---------------------ผลรวม------------------------------------>
+                              <div class="form-group">
+                                <div>
+                                </div>
+                                <hr class="style">
+                                <div class="form-group total ">
+                                  <label for="total" class="col-sm-6 control-label"><strong>ผลรวม: </strong></label>
+                                  <span class="help-text">(Protein + carbohydrates + fat)</span>
+                                  <div class="col-sm-6">
+
+                                    <input type="hidden" id="total" class="form-control">
+                                    <p class="price lead" id="total-label"></p>
+                                    <span class="price">.00</span>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <div class="col-mx-auto">
+                              <button type="submit" class="btn btn-primary btn-lg btn-block">Proceed <span
+                                  class="glyphicon glyphicon-chevron-right pull-right"
+                                  style="padding-right: 10px;"></span></button>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
                   </div>
-                  <div class="form-group">
-                    <div class="col-sm-12">
-                      <button type="submit" class="btn btn-primary btn-lg btn-block">Proceed <span
-                          class="glyphicon glyphicon-chevron-right pull-right"
-                          style="padding-right: 10px;"></span></button>
-                    </div>
-                  </div>
-
-                  <!------------------------------ผลลัพธ์------------------------------>
-
-  </header>
-
-  <!-- Bootstrap core JavaScript-->
-
-  <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>
-  <script src="{{ url_for('static',filename='vendor/jquery/jquery.min.js') }}"></script>
-  <script src="{{ url_for('static',filename='vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-  <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>
-
-  <!-- Core plugin JavaScript-->
-
-  <script src="{{ url_for('static',filename='vendor/jquery-easing/jquery.easing.min.js') }}"></script>
-
-  <!-- Custom scripts for all pages-->
-
-  <script src="{{ url_for('static',filename='js/sb-admin-2.min.js') }}"></script>
-  <script src="{{ url_for('static',filename='js/Slider.js') }}"></script>
-
-</div>
+</section>
 
 {% endblock %}

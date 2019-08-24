@@ -21,8 +21,10 @@
 
     <!-- Custom styles for this template-->
 
+    <link href="{{ url_for('static',filename='css/Yupp.css') }}" rel="stylesheet">
     <link href="{{ url_for('static',filename='css/css.css') }}" rel="stylesheet">
     <link href="{{ url_for('static',filename='css/Slider.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static',filename='vendor/bootstrap/css/bootstrap.css') }}" rel="stylesheet">
 
 </head>
 
@@ -419,7 +421,7 @@
                     </div>
                 </footer>
                 <!-- End of Footer -->
-                
+
                 <!-- Bootstrap core JavaScript-->
                 <script src="{{ url_for('static',filename='vendor/jquery/jquery.min.js') }}"></script>
                 <script src="{{ url_for('static',filename='vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
@@ -429,6 +431,7 @@
 
                 <!-- Custom scripts for all pages-->
                 <script src="{{ url_for('static',filename='js/sb-admin-2.min.js') }}"></script>
+                <script src="{{ url_for('static',filename='js/Slider.js') }}"></script>
 
                 <!-- Page level plugins -->
                 <script src="{{ url_for('static',filename='vendor/chart.js/Chart.min.js') }}"></script>
@@ -436,7 +439,28 @@
                 <!-- Page level custom scripts -->
                 <script src="{{ url_for('static',filename='js/demo/chart-area-demo.js') }}"></script>
                 <script src="{{ url_for('static',filename='js/demo/chart-pie-demo.js') }}"></script>
-                
+
+                <!-- Core plugin JavaScript-->
+
+                <script src="{{ url_for('static',filename='vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+
+                <!-- Custom scripts for all pages-->
+
+                <script src="{{ url_for('static',filename='js/sb-admin-2.min.js') }}"></script>
+
+                <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>
+                <script src="{{ url_for('static',filename='vendor/jquery/jquery.min.js') }}"></script>
+                <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>
+
+
+                <!-- Core plugin JavaScript-->
+                <script src="{{ url_for('static',filename='vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+
+                <!-- Custom scripts for all pages-->
+                <script src="{{ url_for('static',filename='js/sb-admin-2.min.js') }}"></script>
+                <script src="{{ url_for('static',filename='js/Slider.js') }}"></script>
+
+
 </body>
 
 </html>
