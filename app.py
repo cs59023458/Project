@@ -1,13 +1,10 @@
 #Import
 from flask import Flask, render_template, request, redirect, url_for, jsonify, session
-import pymysql
 from forms import RegistrationForm, LoginForm
+from database import conn, conn1
+from calculate import Nutrients,Call#,P,C,F,p,c,f,Energy
 
 app = Flask(__name__)
-
-#connect to DB
-conn = pymysql.connect('localhost','root','','memberdb')
-conn1 = pymysql.connect('localhost','root','','fooddb')
 
 #Home Page
 @app.route("/")
@@ -42,7 +39,30 @@ def about():
 #Calculate
 @app.route("/calculate")
 def calculate():
-    return render_template('calculate.html')
+    with conn1:
+        cur = conn1.cursor()
+        cur.execute("""SELECT *
+        FROM  nutrients 
+        WHERE nutrients_group = '2'""")
+        rowsp = cur.fetchall()
+    with conn1:
+        cur = conn1.cursor()
+        cur.execute("""SELECT *
+        FROM  nutrients 
+        WHERE nutrients_group = '1'""")
+        rowsc = cur.fetchall()
+    with conn1:
+        cur = conn1.cursor()
+        cur.execute("""SELECT *
+        FROM  nutrients 
+        WHERE nutrients_group = '3'""")
+        rowsf = cur.fetchall()
+    with conn1:
+        cur = conn1.cursor()
+        cur.execute("""SELECT id_calculationtype,type
+                    FROM foodcalculationtype""")
+        row = cur.fetchall()
+    return render_template('cal.html',data=row,datap=rowsp,datac=rowsc,dataf=rowsf)
 
 #Table
 @app.route("/table")
@@ -100,6 +120,7 @@ def insert():
         return redirect(url_for('manage'))    
 
 #Show Foods Page
+'''
 @app.route("/foods")
 def showfood():
     with conn1:
@@ -111,7 +132,7 @@ def showfood():
         INNER JOIN nutrients n2 ON f.ingredients_c = n2.ingredients_id 
         INNER JOIN nutrients n3 ON f.ingredients_f = n3.ingredients_id""")
         rows = cur.fetchall()
-    return render_template('foods.html',data=rows)
+    return render_template('foods.html',data=rows)'''
 
 #Show Ingedients 
 @app.route("/showingedients")

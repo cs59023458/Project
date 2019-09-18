@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+{% block content %}
+<form action="" method="POST">
+    <h2>การคำนวณ</h2>
+    <select>
+        {% for row in data %}
+        <option value="{{row.0}}" name="pro" id="pro">{{row.1}}</option>
+        {% endfor %}
+    </select>
+    <h2>protein</h2>
+    <select>
+        {% for rowsp in datap %}
+        <option value="{{rowsp.0}}">{{rowsp.1}}</option>
+        {% endfor %}
+    </select>
+    <div class="slidecontainer">
+        <input type="range" min="1" max="100" value="0" class="slider" name="protein" id="protein">
+        <p>Value: <span id="p"></span>%</p>
+    </div>
+    <h2>Carbohydrate</h2>
+    <select>
+        {% for rowsc in datac %}
+        <option value="{{rowsc.0}}">{{rowsc.1}}</option>
+        {% endfor %}
+    </select>
+    <div class="slidecontainer">
+        <input type="range" min="1" max="100" value="0" class="slider" name="carbohydrate" id="carbohydrate">
+        <p>Value: <span id="c"></span>%</p>
+    </div>
+    <h2>Fat</h2>
+    <select>
+        {% for rowsf in dataf %}
+        <option value="{{rowsf.0}}">{{rowsf.1}}</option>
+        {% endfor %}
+    </select>
+    <div class="slidecontainer">
+        <input type="range" min="1" max="100" value="0" class="slider" name="fat" id="fat">
+        <p>Value: <span id="f"></span>%</p>
+    </div>
+    <p>Value: <span id="A"></span>%</p>
+    <br>
+    <input type="submit" value="Calculate">
+</form>
+<script>
+    var P = document.getElementById("protein");
+    var C = document.getElementById("carbohydrate");
+    var F = document.getElementById("fat");
+    var A = document.getElementById("protein");
+    var outputP = document.getElementById("p");
+    var outputC = document.getElementById("c");
+    var outputF = document.getElementById("f");
+    var output = document.getElementById("A");
+    output.innerHTML = A.value;
+    outputP.innerHTML = P.value;
+    outputC.innerHTML = C.value;
+    outputF.innerHTML = F.value;
+
+    P.oninput = function () {
+        outputP.innerHTML = this.value;
+    }
+    C.oninput = function () {
+        outputC.innerHTML = this.value;
+    }
+    F.oninput = function () {
+        outputF.innerHTML = this.value;
+    }
+    A.oninput = function () {
+        output.innerHTML = this.value;
+    }
+</script>
+{% endblock %}
