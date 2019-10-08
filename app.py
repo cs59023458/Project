@@ -1,41 +1,34 @@
 #Import
-from flask import Flask, render_template, request, redirect, url_for, jsonify, session
+from flask import Flask, render_template, request, redirect, url_for, jsonify, session, make_response
+#from flask.ext.bootstrap import Bootstrap
 from forms import RegistrationForm, LoginForm
 from database import conn, conn1
-from calculate import Nutrients,Call#,P,C,F,p,c,f,Energy
+from calculate import Nutrients,Call
 
 app = Flask(__name__)
 
-#Home Page
 @app.route("/")
 def index():
     return render_template('index.html')
 
-#Login Page
-@app.route("/login")
-def login():
-    return render_template('login.html')
+#Home Page
+@app.route("/home")
+def homepage():
+    return render_template('homepage.html')
 
-#Register Page
-@app.route("/register")
-def register():
-    return render_template('register.html')
-
-#Forgot-Password page
-@app.route("/forgotpassword")
-def forgotpassword():
-    return render_template('forgotpassword.html')
-
-#404 page
-@app.route("/404")
-def error404():
-    return render_template('404.html')
-
-#About Page
 @app.route("/about")
 def about():
     return render_template('about.html')
 
+@app.route("/cal")
+def cal():
+    return render_template('Calculatecalories.html')
+
+@app.route("/his")
+def his():
+    return render_template('his.html')
+
+'''
 #Calculate
 @app.route("/calculate")
 def calculate():
@@ -120,7 +113,7 @@ def insert():
         return redirect(url_for('manage'))    
 
 #Show Foods Page
-'''
+
 @app.route("/foods")
 def showfood():
     with conn1:
@@ -132,7 +125,7 @@ def showfood():
         INNER JOIN nutrients n2 ON f.ingredients_c = n2.ingredients_id 
         INNER JOIN nutrients n3 ON f.ingredients_f = n3.ingredients_id""")
         rows = cur.fetchall()
-    return render_template('foods.html',data=rows)'''
+    return render_template('foods.html',data=rows)
 
 #Show Ingedients 
 @app.route("/showingedients")
@@ -165,7 +158,7 @@ def insert_ingedients():
             VALUES ('%s','%s','%s','%s','%s');"""
             cursor.execute(sql,(ingedients_name,nutrients_group,p,c,f))
             conn1.commit()
-        return redirect(url_for('ingedients'))
+        return redirect(url_for('ingedients'))'''
 
 #Debug Code
 if __name__ == "__main__":
