@@ -1,4 +1,7 @@
 {% extends "layout.html" %}
+{% block title %}
+HomePage
+{% endblock %}
 {% block content %}
 <!-- hero area -->
 <section class="hero-section">
@@ -10,10 +13,10 @@
         <p class="mb-80 mr-5"> .</p>
         <span class="font-secondary text-dark mr-3 mr-sm-5">Follow</span>
         <ul class="list-inline d-inline-block mb-5">
-          <li class="list-inline-item mx-3"><a href="#" class="text-dark"><i class="ti-facebook"></i></a></li>
-          <li class="list-inline-item mx-3"><a href="#" class="text-dark"><i class="ti-twitter-alt"></i></a></li>
-          <li class="list-inline-item mx-3"><a href="#" class="text-dark"><i class="ti-linkedin"></i></a></li>
-          <li class="list-inline-item mx-3"><a href="#" class="text-dark"><i class="ti-github"></i></a></li>
+          <li class="list-inline-item mx-3"><a href="www.facebook.com" class="text-dark"><i class="ti-facebook"></i></a></li>
+          <li class="list-inline-item mx-3"><a href="www.twitter.com" class="text-dark"><i class="ti-twitter-alt"></i></a></li>
+          <li class="list-inline-item mx-3"><a href="www.linkedin.com" class="text-dark"><i class="ti-linkedin"></i></a></li>
+          <li class="list-inline-item mx-3"><a href="www.github.com" class="text-dark"><i class="ti-github"></i></a></li>
         </ul>
       </div>
       <div class="col-lg-6 text-right">
@@ -35,9 +38,9 @@
           <div class="card-img-overlay">
             <div class="card-content">
               <p class="text-uppercase">LifeStyle</p>
-              <h4 class="card-title mb-4"><a class="text-white" href="blog-single.html">Organize Your Life With 10
+              <h4 class="card-title mb-4"><a class="text-white" href="">Organize Your Life With 10
                   Simple rule</a></h4>
-              <a class="btn btn-outline-light" href="blog-single.html">read more</a>
+              <a class="btn btn-outline-light" href="">read more</a>
             </div>
           </div>
         </article>
@@ -49,9 +52,9 @@
           <div class="card-img-overlay">
             <div class="card-content">
               <p class="text-uppercase">LifeStyle</p>
-              <h4 class="card-title mb-4"><a class="text-white" href="blog-single.html">Organize Your Life With 10
+              <h4 class="card-title mb-4"><a class="text-white" href="">Organize Your Life With 10
                   Simple rule</a></h4>
-              <a class="btn btn-outline-light" href="blog-single.html">read more</a>
+              <a class="btn btn-outline-light" href="">read more</a>
             </div>
           </div>
         </article>
@@ -63,9 +66,9 @@
           <div class="card-img-overlay">
             <div class="card-content">
               <p class="text-uppercase">LifeStyle</p>
-              <h4 class="card-title mb-4"><a class="text-white" href="blog-single.html">Organize Your Life With 10
+              <h4 class="card-title mb-4"><a class="text-white" href="">Organize Your Life With 10
                   Simple rule</a></h4>
-              <a class="btn btn-outline-light" href="blog-single.html">read more</a>
+              <a class="btn btn-outline-light" href="">read more</a>
             </div>
           </div>
         </article>
@@ -77,9 +80,9 @@
           <div class="card-img-overlay">
             <div class="card-content">
               <p class="text-uppercase">LifeStyle</p>
-              <h4 class="card-title mb-4"><a class="text-white" href="blog-single.html">Organize Your Life With 10
+              <h4 class="card-title mb-4"><a class="text-white" href="">Organize Your Life With 10
                   Simple rule</a></h4>
-              <a class="btn btn-outline-light" href="blog-single.html">read more</a>
+              <a class="btn btn-outline-light" href="">read more</a>
             </div>
           </div>
         </article>
@@ -91,9 +94,9 @@
           <div class="card-img-overlay">
             <div class="card-content">
               <p class="text-uppercase">LifeStyle</p>
-              <h4 class="card-title mb-4"><a class="text-white" href="blog-single.html">Organize Your Life With 10
+              <h4 class="card-title mb-4"><a class="text-white" href="">Organize Your Life With 10
                   Simple rule</a></h4>
-              <a class="btn btn-outline-light" href="blog-single.html">read more</a>
+              <a class="btn btn-outline-light" href="">read more</a>
             </div>
           </div>
         </article>
@@ -108,7 +111,7 @@
   <div class="container">
     <div class="row">
       <div class="col-12 mb-100">
-        <article data-file="articles/b.html" data-target="article" class="article-full-width">
+        <article data-file="" data-target="article" class="article-full-width">
           <div class="post-image">
             <img class="img-fluid" src="{{ url_for('static',filename='images/masonary-post/post-2.jpg') }}"
               alt="post-thumb">
@@ -118,7 +121,7 @@
               <li class="list-inline-item"><i class="ti-calendar mr-2"></i>June 2, 2018</li>
               <li class="list-inline-item"><i class="ti-alarm-clock mr-2"></i><span class="eta">8 min</span> read</li>
             </ul>
-            <h4 class="mb-4"><a href="blog-single.html" class="text-dark">Lorem ipsum dolor sit amet, consectetur
+            <h4 class="mb-4"><a href="" class="text-dark">Lorem ipsum dolor sit amet, consectetur
                 adipisicing
                 elit</a></h4>
             <p class="mb-0 post-summary">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
@@ -126,7 +129,7 @@
               ut labore et
               dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
               ea commodo consequat.</p>
-            <a class="btn btn-transparent mb-4" href="blog-single.html">Continue...</a>
+            <a class="btn btn-transparent mb-4" href="">Continue...</a>
             <div class="author">
               <span class="d-block">Post by</span>
               <p>Jhon Abraham</p>
@@ -135,7 +138,7 @@
         </article>
       </div>
       <div class="col-12 mb-100">
-        <article data-file="articles/b.html" data-target="article" class="article-full-width article-right">
+        <article data-file="" data-target="article" class="article-full-width article-right">
           <div class="post-image">
             <img class="img-fluid" src="{{ url_for('static',filename='images/masonary-post/post-3.jpg') }}"
               alt="post-thumb">
@@ -145,7 +148,7 @@
               <li class="list-inline-item"><i class="ti-calendar mr-2"></i>June 2, 2018</li>
               <li class="list-inline-item"><i class="ti-alarm-clock mr-2"></i><span class="eta">8 min</span> read</li>
             </ul>
-            <h4 class="mb-4"><a href="blog-single.html" class="text-dark">Lorem ipsum dolor sit amet, consectetur
+            <h4 class="mb-4"><a href="" class="text-dark">Lorem ipsum dolor sit amet, consectetur
                 adipisicing
                 elit</a></h4>
             <p class="mb-0 post-summary">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
@@ -153,7 +156,7 @@
               ut labore et
               dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
               ea commodo consequat.</p>
-            <a class="btn btn-transparent mb-4" href="blog-single.html">Continue...</a>
+            <a class="btn btn-transparent mb-4" href="">Continue...</a>
             <div class="author">
               <span class="d-block">Post by</span>
               <p>Jhon Abraham</p>
@@ -162,7 +165,7 @@
         </article>
       </div>
       <div class="col-12 mb-100">
-        <article data-file="articles/b.html" data-target="article" class="article-full-width">
+        <article data-file="" data-target="article" class="article-full-width">
           <div class="post-image">
             <img class="img-fluid" src="{{ url_for('static',filename='images/masonary-post/post-4.png') }}"
               alt="post-thumb">
@@ -172,7 +175,7 @@
               <li class="list-inline-item"><i class="ti-calendar mr-2"></i>June 2, 2018</li>
               <li class="list-inline-item"><i class="ti-alarm-clock mr-2"></i><span class="eta">8 min</span> read</li>
             </ul>
-            <h4 class="mb-4"><a href="blog-single.html" class="text-dark">Lorem ipsum dolor sit amet, consectetur
+            <h4 class="mb-4"><a href="" class="text-dark">Lorem ipsum dolor sit amet, consectetur
                 adipisicing
                 elit</a></h4>
             <p class="mb-0 post-summary">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
@@ -180,7 +183,7 @@
               ut labore et
               dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
               ea commodo consequat.</p>
-            <a class="btn btn-transparent mb-4" href="blog-single.html">Continue...</a>
+            <a class="btn btn-transparent mb-4" href="">Continue...</a>
             <div class="author">
               <span class="d-block">Post by</span>
               <p>Jhon Abraham</p>
@@ -189,7 +192,7 @@
         </article>
       </div>
       <div class="col-12 mb-100">
-        <article data-file="articles/b.html" data-target="article" class="article-full-width article-right">
+        <article data-file="" data-target="article" class="article-full-width article-right">
           <div class="post-image">
             <img class="img-fluid" src="{{ url_for('static',filename='images/masonary-post/post-5.jpg') }}"
               alt="post-thumb">
@@ -199,7 +202,7 @@
               <li class="list-inline-item"><i class="ti-calendar mr-2"></i>June 2, 2018</li>
               <li class="list-inline-item"><i class="ti-alarm-clock mr-2"></i><span class="eta">8 min</span> read</li>
             </ul>
-            <h4 class="mb-4"><a href="blog-single.html" class="text-dark">Lorem ipsum dolor sit amet, consectetur
+            <h4 class="mb-4"><a href="" class="text-dark">Lorem ipsum dolor sit amet, consectetur
                 adipisicing
                 elit</a></h4>
             <p class="mb-0 post-summary">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
@@ -207,7 +210,7 @@
               ut labore et
               dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
               ea commodo consequat.</p>
-            <a class="btn btn-transparent mb-4" href="blog-single.html">Continue...</a>
+            <a class="btn btn-transparent mb-4" href="">Continue...</a>
             <div class="author">
               <span class="d-block">Post by</span>
               <p>Jhon Abraham</p>
@@ -216,7 +219,7 @@
         </article>
       </div>
       <div class="col-12 mb-100">
-        <article data-file="articles/b.html" data-target="article" class="article-full-width">
+        <article data-file="" data-target="article" class="article-full-width">
           <div class="post-image">
             <img class="img-fluid" src="{{ url_for('static',filename='images/masonary-post/post-6.jpg') }}"
               alt="post-thumb">
@@ -226,7 +229,7 @@
               <li class="list-inline-item"><i class="ti-calendar mr-2"></i>June 2, 2018</li>
               <li class="list-inline-item"><i class="ti-alarm-clock mr-2"></i><span class="eta">8 min</span> read</li>
             </ul>
-            <h4 class="mb-4"><a href="blog-single.html" class="text-dark">Lorem ipsum dolor sit amet, consectetur
+            <h4 class="mb-4"><a href="" class="text-dark">Lorem ipsum dolor sit amet, consectetur
                 adipisicing
                 elit</a></h4>
             <p class="mb-0 post-summary">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
@@ -234,7 +237,7 @@
               ut labore et
               dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
               ea commodo consequat.</p>
-            <a class="btn btn-transparent mb-4" href="blog-single.html">Continue...</a>
+            <a class="btn btn-transparent mb-4" href="">Continue...</a>
             <div class="author">
               <span class="d-block">Post by</span>
               <p>Jhon Abraham</p>
@@ -243,7 +246,7 @@
         </article>
       </div>
       <div class="col-12 mb-100">
-        <article data-file="articles/b.html" data-target="article" class="article-full-width article-right">
+        <article data-file="" data-target="article" class="article-full-width article-right">
           <div class="post-image">
             <img class="img-fluid" src="{{ url_for('static',filename='images/masonary-post/post-1.jpg') }}"
               alt="post-thumb">
@@ -253,7 +256,7 @@
               <li class="list-inline-item"><i class="ti-calendar mr-2"></i>June 2, 2018</li>
               <li class="list-inline-item"><i class="ti-alarm-clock mr-2"></i><span class="eta">8 min</span> read</li>
             </ul>
-            <h4 class="mb-4"><a href="blog-single.html" class="text-dark">Lorem ipsum dolor sit amet, consectetur
+            <h4 class="mb-4"><a href="" class="text-dark">Lorem ipsum dolor sit amet, consectetur
                 adipisicing
                 elit</a></h4>
             <p class="mb-0 post-summary">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
@@ -261,7 +264,7 @@
               ut labore et
               dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
               ea commodo consequat.</p>
-            <a class="btn btn-transparent mb-4" href="blog-single.html">Continue...</a>
+            <a class="btn btn-transparent mb-4" href="">Continue...</a>
             <div class="author">
               <span class="d-block">Post by</span>
               <p>Jhon Abraham</p>

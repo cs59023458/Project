@@ -6,7 +6,7 @@
     
     {% endblock %}
     <meta charset="utf-8">
-    <title>{% block title %}{% endblock %}Template</title>
+    <title>{% block title %}{% endblock %}</title>
 
     <!-- mobile responsive meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -70,7 +70,7 @@
 
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-uppercase text-dark" href="">ฉัน</a>
+                        <a class="nav-link text-uppercase text-dark" href="{{ url_for('homepage') }}">ฉัน</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-uppercase text-dark" href="{{ url_for('cal') }}">คำนวณ</a>

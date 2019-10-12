@@ -1,32 +1,53 @@
-#Import
+# Import
 from flask import Flask, render_template, request, redirect, url_for, jsonify, session, make_response
 #from flask.ext.bootstrap import Bootstrap
 from forms import RegistrationForm, LoginForm
-from database import conn, conn1
-from calculate import Nutrients,Call
+from flask_mysqldb import MySQL
+from calculate import Nutrients, Call
 
 app = Flask(__name__)
+
+app.secret_key = "flash message"
+app.config['MYSQL_HOST'] = 'localhost'
+app.config['MYSQL_USER'] = 'root'
+app.config['MYSQL_PASSWORD'] = ''
+app.config['MYSQL_DB'] = 'nce'
+
+mysql = MySQL(app)
 
 @app.route("/")
 def index():
     return render_template('index.html')
 
-#Home Page
+# Home Page
 @app.route("/home")
 def homepage():
     return render_template('homepage.html')
+
 
 @app.route("/about")
 def about():
     return render_template('about.html')
 
+
 @app.route("/cal")
 def cal():
-    return render_template('Calculatecalories.html')
+    cur = mysql.connection.cursor()
+    cur.execute("""SELECT id_nutrients,name_nutrients FROM nutrients WHERE group_nutrients = 'p'""")
+    data = cur.fetchall()
+    cur.close()
+    return render_template('Calculatecalories.html', rowsp=data)
+
+@app.route("/call" , methods=['GET', 'POST'])
+def call():
+    select = request.form.get('select')
+    return(str(select)) 
+
 
 @app.route("/his")
 def his():
     return render_template('his.html')
+
 
 '''
 #Calculate
@@ -160,7 +181,7 @@ def insert_ingedients():
             conn1.commit()
         return redirect(url_for('ingedients'))'''
 
-#Debug Code
+# Debug Code
 if __name__ == "__main__":
     app.debug = True
-    app.run(host='localhost',port=8000)
+    app.run(host='localhost', port=8000)
