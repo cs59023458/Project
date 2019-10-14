@@ -1,154 +1,98 @@
 {% extends "layout.html" %}
+{% block head %}
+<style>
+    .slidecontainer {
+        width: 100%;
+    }
+
+    .slider {
+        -webkit-appearance: none;
+        width: 50%;
+        height: 25px;
+        background: #d3d3d3;
+        outline: none;
+        opacity: 0.7;
+        -webkit-transition: .2s;
+        transition: opacity .2s;
+    }
+
+    .slider:hover {
+        opacity: 1;
+    }
+
+    .slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 25px;
+        height: 25px;
+        background: #4CAF50;
+        cursor: pointer;
+    }
+
+    .slider::-moz-range-thumb {
+        width: 25px;
+        height: 25px;
+        background: #4CAF50;
+        cursor: pointer;
+    }
+</style>
+{% endblock %}
+
+{% block script %}
+<script>
+    var slider = document.getElementById("myRange");
+    var output = document.getElementById("demo");
+    output.innerHTML = slider.value;
+
+    slider.oninput = function () {
+        output.innerHTML = this.value;
+    }
+</script>
+{% endblock %}
+
 {% block content %}
-<!-- ----------------------------------------------------------------------------------------------------------------------------------------------------------- -->
-<!------ Include the above in your HEAD tag ---------->
 <section>
-    <form class="form-inline" method="POST" action="{{ url_for('call') }}">
-        <div class="container">
-            <div class="price-box">
-                <form class="form-horizontal form-pricing" role="form">
-                    <div class="price-slider">
-                        <div class="btn-group  float-left ">
-                        </div>
-                        <h4 class="great">โปรตีน</h4>
-                        <select name="select">
-                            {% for p in rowsp %}
-                            <option value="{{p.0}}">{{p.1}}</option>
-                            {% endfor %}
-                        </select>
-                        <span>โปรดรับประทานแต่พอดี</span>
-                        <div class="col-sm-12">
-                            <div id="slider"></div>
-                            <br>
-                            <div class="form-group">
-                                <label for="amount" class="col-sm-6 control-label">จำนวล (g.): </label>
-
-                                <div class="col-sm-6">
-                                    <input type="hidden" id="amount" class="form-control">
-                                    <p class="price lead" id="amount-label"></p>
-                                    <span class="price"></span>
-                                </div>
-                            </div>
-                            <!---------------------โปรตีน------------------------------------>
-                            <!---------------------คาร์โบไฮเดรต-duration----------------------------------->
-                            <div class="price-slider">
-                                <div class="btn-group  float-left ">
-                                </div>
-                                <h4 class="great">คาร์โบไฮเดรต</h4>
-                                <span>โปรดรับประทานแต่พอดี</span>
-                                <div class="col-sm-12">
-                                    <div id="slider2"></div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="duration" class="col-sm-6 control-label">จำนวล (g.): </label>
-
-                                <div class="col-sm-6">
-                                    <input type="hidden" id="duration" class="form-control">
-                                    <p class="price lead" id="duration-label"></p>
-                                    <span class="price"></span>
-                                </div>
-                            </div>
-
-                            <!---------------------คาร์โบไฮเดรต------------------------------------>
-                            <!---------------------fat------------------------------------>
-                            <div class="price-slider">
-                                <div class="btn-group  float-left ">
-
-                                </div>
-                                <h4 class="great">ไขมัน</h4>
-                                <span>โปรดรับประทานแต่พอดี</span>
-                                <div class="col-sm-12">
-                                    <div id="slider3"></div>
-                                    <br>
-                                    <div class="form-group">
-                                        <label for="fat" class="col-sm-6 control-label">จำนวล (g.): </label>
-
-                                        <div class="col-sm-6">
-                                            <input type="hidden" id="fat" class="form-control">
-                                            <p class="price lead" id="fat-label"></p>
-                                            <span class="price"> </span>
-                                        </div>
-                                    </div>
-
-
-
-
-                                    <hr class="style">
-                                    <div class="form-group total">
-                                        <label for="total" class="col-sm-6 control-label"><strong>ผลรวม:
-                                            </strong></label>
-
-                                        <div class="col-sm-6">
-                                            <input type="hidden" id="total" class="form-control">
-                                            <p class="price lead" id="total-label"></p>
-                                            <span class="price">
-                                                <h5>กิโลแคลอรี่</h5>
-                                            </span> <a href="his.html" class="btn btn-info " role="button">ยืนยัน</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                </form>
-            </div>
-    </form>
-</section>
-
-
-
-
-
-
-<!-- instagram -->
-<section>
-    <div class="container-fluid px-0">
-        <div class="row no-gutters instagram-slider" id="instafeed" data-userId="4044026246"
-            data-accessToken="4044026246.1677ed0.8896752506ed4402a0519d23b8f50a17"></div>
-    </div>
-</section>
-<!-- /instagram -->
-
-<footer>
-    <div class="section">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3 col-sm-6 mb-4 mb-md-0">
-                    <a href="index.html"><img src="{{ url_for('static',filename='images/logo.png') }}" alt="persa"
-                            class="img-fluid"></a>
-                </div>
-                <div class="col-md-3 col-sm-6 mb-4 mb-md-0">
-                    <ul class="list-unstyled">
-                        <li class="font-secondary text-dark">Sydney</li>
-                        <li class="font-secondary text-dark">6 rip carl Avenue CA 90733</li>
-                    </ul>
-                </div>
-                <div class="col-md-3 col-sm-6 mb-4 mb-md-0">
-                    <ul class="list-unstyled">
-                        <li class="font-secondary text-dark">Tel: +90 000 333 22</li>
-                        <li class="font-secondary text-dark">Mail: exmaple@ymail.com</li>
-                    </ul>
-                </div>
-                <div class="col-md-3 col-sm-6 mb-4 mb-md-0">
-                    <span class="font-secondary text-dark mr-3">Follow</span>
-                    <ul class="list-inline d-inline-block">
-                        <li class="list-inline-item"><a href="#" class="text-dark"><i class="ti-facebook"></i></a>
-                        </li>
-                        <li class="list-inline-item"><a href="#" class="text-dark"><i class="ti-twitter-alt"></i></a>
-                        </li>
-                        <li class="list-inline-item"><a href="#" class="text-dark"><i class="ti-linkedin"></i></a>
-                        </li>
-                        <li class="list-inline-item"><a href="#" class="text-dark"><i class="ti-github"></i></a>
-                        </li>
-                    </ul>
-                </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <blockquote>
+                    <form action="{{ url_for('process') }}" method="POST">
+                        <h6>อาหาร
+                            <select name="foodname">
+                                {% for row in food %}
+                                <option value="{{row.0}}">{{row.1}}</option>
+                                {% endfor %}
+                            </select>
+                        </h6><br>
+                        <p>โปรตีน : <select name="P">
+                                {% for row in p %}
+                                <option value="{{row.0}}">{{row.1}}</option>
+                                {% endfor %}
+                            </select></p>
+                        <div class="slidecontainer">
+                            <input type="range" min="1" max="2000" value="0" class="slider" name="volumep">
+                        </div><br>
+                        <p>คาร์โบไฮเดรต : <select name="C">
+                                {% for row in c %}
+                                <option value="{{row.0}}">{{row.1}}</option>
+                                {% endfor %}
+                            </select></p>
+                        <div class="slidecontainer">
+                            <input type="range" min="1" max="2000" value="0" class="slider" name="volumec">
+                        </div><br>
+                        <p>ไขมัน : <select name="F">
+                                {% for row in f %}
+                                <option value="{{row.0}}">{{row.1}}</option>
+                                {% endfor %}
+                            </select></p>
+                        <div class="slidecontainer">
+                            <input type="range" min="1" max="2000" value="0" class="slider" name="volumef">
+                        </div><br>
+                        <input type="submit" value="Calculate">
+                    </form>
+                </blockquote>
             </div>
         </div>
     </div>
-    <div class="text-center">
-        <p>Copyright ©
-            <script>var CurrentYear = new Date().getFullYear()
-                document.write(CurrentYear)</script> a theme by themefisher.com</p>
-    </div>
-</footer>
-
+</section>
 {% endblock %}

@@ -1,0 +1,106 @@
+{% extends "layout.html" %}
+
+{% block script %}
+{% endblock %}
+
+{% block content %}
+<!-- ----------------------------------------------------------------------------------------------------------------------------------------------------------- -->
+<!------ Include the above in your HEAD tag ---------->
+<section>
+    <form class="form-inline" method="POST" action="{{ url_for('call') }}">
+        <div class="container">
+            <div class="price-box">
+                <form class="form-horizontal form-pricing" role="form">
+                    <div class="price-slider">
+                        <div class="btn-group  float-left ">
+                        </div>
+                        <div class="dropdown">
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                                โปรตีน
+                            </button>
+                            <div class="dropdown-menu">
+                                {% for row in p %}
+                                <a class="dropdown-item" aria-valuenow="{{row.0}}">{{row.1}}</a>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <h4 class="great">โปรตีน</h4>
+                        <span>โปรดรับประทานแต่พอดี</span>
+                        <div class="col-sm-12">
+                            <div id="slider"></div>
+                            <br>
+                            <div class="form-group">
+                                <label for="amount" class="col-sm-6 control-label">จำนวล (g.): </label>
+
+                                <div class="col-sm-6">
+                                    <input type="hidden" id="amount" class="form-control">
+                                    <p class="price lead" id="amount-label"></p>
+                                    <span class="price"></span>
+                                </div>
+                            </div>
+                            <!---------------------โปรตีน------------------------------------>
+                            <!---------------------คาร์โบไฮเดรต-duration----------------------------------->
+                            <div class="price-slider">
+                                <div class="btn-group  float-left ">
+                                </div>
+                                <h4 class="great">คาร์โบไฮเดรต</h4>
+                                <span>โปรดรับประทานแต่พอดี</span>
+                                <div class="col-sm-12">
+                                    <div id="slider2"></div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="duration" class="col-sm-6 control-label">จำนวล (g.): </label>
+
+                                <div class="col-sm-6">
+                                    <input type="hidden" id="duration" class="form-control">
+                                    <p class="price lead" id="duration-label"></p>
+                                    <span class="price"></span>
+                                </div>
+                            </div>
+
+                            <!---------------------คาร์โบไฮเดรต------------------------------------>
+                            <!---------------------fat------------------------------------>
+                            <div class="price-slider">
+                                <div class="btn-group  float-left ">
+
+                                </div>
+                                <h4 class="great">ไขมัน</h4>
+                                <span>โปรดรับประทานแต่พอดี</span>
+                                <div class="col-sm-12">
+                                    <div id="slider3"></div>
+                                    <br>
+                                    <div class="form-group">
+                                        <label for="fat" class="col-sm-6 control-label">จำนวล (g.): </label>
+
+                                        <div class="col-sm-6">
+                                            <input type="hidden" id="fat" class="form-control">
+                                            <p class="price lead" id="fat-label"></p>
+                                            <span class="price"> </span>
+                                        </div>
+                                    </div>
+
+
+
+
+                                    <hr class="style">
+                                    <div class="form-group total">
+                                        <label for="total" class="col-sm-6 control-label"><strong>ผลรวม:
+                                            </strong></label>
+
+                                        <div class="col-sm-6">
+                                            <input type="hidden" id="total" class="form-control">
+                                            <p class="price lead" id="total-label"></p>
+                                            <span class="price">
+                                                <h5>กิโลแคลอรี่</h5>
+                                            </span> <a href="his.html" class="btn btn-info " role="button">ยืนยัน</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                </form>
+            </div>
+    </form>
+</section>
+
+{% endblock %}

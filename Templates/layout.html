@@ -2,9 +2,6 @@
 <html lang="zxx">
 
 <head>
-    {% block head %}
-    
-    {% endblock %}
     <meta charset="utf-8">
     <title>{% block title %}{% endblock %}</title>
 
@@ -19,6 +16,7 @@
     <link rel="stylesheet" href="{{ url_for('static',filename='plugins/slick/slick.css') }}">
     <!-- themefy-icon -->
     <link rel="stylesheet" href="{{ url_for('static',filename='plugins/themify-icons/themify-icons.css') }}">
+    
 
     <!-- Main Stylesheet -->
     <link href="{{ url_for('static',filename='css/Slider.css') }}" rel="stylesheet">
@@ -28,6 +26,9 @@
     <link rel="shortcut icon" href="{{ url_for('static',filename='images/favicon.ico') }}" type="image/x-icon">
     <link rel="icon" href="{{ url_for('static',filename='images/favicon.ico') }}" type="image/x-icon">
     <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static',filename='images/parsley.png') }}">
+    {% block head %}
+    
+    {% endblock %}
 </head>
 
 <body>
@@ -44,13 +45,7 @@
     </div>
     <!-- /preloader -->
 
-    <!-- dividers -->
-    <div class="dividers">
-        <div class="divider"></div>
-        <div class="divider"></div>
-        <div class="divider"></div>
-        <div class="divider"></div>
-    </div>
+    
 
     <header class="navigation">
         <nav class="navbar navbar-expand-lg navbar-light">
@@ -80,7 +75,7 @@
                         <a class="nav-link text-uppercase text-dark" href="{{ url_for('his') }}">จัดอาหาร</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-uppercase text-dark" href="app-clebder.html">ประวัติ</a>
+                        <a class="nav-link text-uppercase text-dark" href="{{ url_for('calendar') }}">ประวัติ</a>
                       </li>
                 </ul>
                 <form class="form-inline position-relative ml-lg-4">

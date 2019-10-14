@@ -1,342 +1,67 @@
 {% extends "layout.html" %}
 {% block head %}
-<link rel="stylesheet" href="{{ url_for('static',filename='css/multiselect.css') }}">
+<!-- jQuery library -->
+<script src="{{ url_for('static',filename='plugins/jQuery/jquery.min.js') }}"></script>
+
+<!-- MultiSelect CSS & JS library -->
+<link href="{{ url_for('static',filename='css/jquery.multiselect.css') }}" rel="stylesheet" />
+<script src="{{ url_for('static',filename='js/jquery.multiselect.js') }}"></script>
+
 {% endblock %}
+
+{% block body %}
+
+{% endblock%}
+
 {% block content %}
-<h1 class="text-center">
-  <!--------------------หัวข้อ----------->
+<section>
   <div class="container">
-    <div class="row">
-      <!--team-1-->
-      <div class="col-lg-4">
-        <div class="our-team-main">
+    <form>
+      เช้า
+      <select name="langOpt[]" multiple id="langOpt1">
+        <option value="C++">C++</option>
+      </select>
+      เที่ยง
+      <select name="langOpt[]" multiple id="langOpt2">
+        <option value="C++">C++</option>
+      </select>
+      เย็น
 
-          <div class="team-front">
-
-            <h3>เช้า</h3>
-            <p>07.00 - 08.00 น.</p>
-            <form>
-              <div class="multiselect">
-                <div class="selectBox" onclick="showCheckboxes()">
-                  <select>
-                    <option></option>
-                  </select>
-                  <div class="overSelect"></div>
-                </div>
-                <div id="checkboxes">
-                  <label for="one"><input type="checkbox" id="one" />
-                    <p>First checkbox</p>
-                  </label>
-                </div>
-              </div>
-            </form>
-          </div>
-          <table>
-            <tr>
-              <th>
-                <p>รายการอาหาร</p>
-              </th>
-            </tr>
-            <tr>
-              <td>
-                <p>1</p>
-                <p>2</p>
-              </td>
-            </tr>
-          </table>
-          <div class="team-back">
-            <span>
-              <!--------------------จุดเชื่อมข้อมูลเข้าหรือใส่ข้อมูล----------->
-              <!--------------------จุดเชื่อมข้อมูลเข้าหรือใส่ข้อมูล----------->
-              <button type="button" class="btn btn-primary mx-auto" data-toggle="modal" data-target="#product_view"><i
-                  class="fa fa-search"></i> เพิ่ม</button>
-              <!--------------------จุดเชื่อมข้อมูลเข้าหรือใส่ข้อมูล----------->
-              <!--------------------จุดเชื่อมข้อมูลเข้าหรือใส่ข้อมูล----------->
-            </span>
-          </div>
-        </div>
-      </div>
-      <!--team-1-->
-      <!--team-2-->
-      <div class="col-lg-4">
-        <div class="our-team-main">
-
-          <div class="team-front">
-
-            <h3>ก่อนเที่ยง</h3>
-            <p>09.00-11.00</p>
-            <form>
-              <div class="multiselect">
-                <div class="selectBox" onclick="showCheckboxes()">
-                  <select>
-                    <option></option>
-                  </select>
-                  <div class="overSelect"></div>
-                </div>
-                <div id="checkboxes">
-                  <label for="one"><input type="checkbox" id="one" />
-                    <p>First checkbox</p>
-                  </label>
-                </div>
-              </div>
-            </form>
-          </div>
-          <table>
-            <tr>
-              <th>
-                <p>รายการอาหาร</p>
-              </th>
-            </tr>
-          </table>
-        </div>
-
-        <div class="team-back">
-          <span>
-            <!--------------------จุดเชื่อมข้อมูลเข้าหรือใส่ข้อมูล----------->
-            <!--------------------จุดเชื่อมข้อมูลเข้าหรือใส่ข้อมูล----------->
-            <button type="button" class="btn btn-primary mx-auto" data-toggle="modal" data-target="#product_view"><i
-                class="fa fa-search"></i> เพิ่ม</button>
-            <!--------------------จุดเชื่อมข้อมูลเข้าหรือใส่ข้อมูล----------->
-            <!--------------------จุดเชื่อมข้อมูลเข้าหรือใส่ข้อมูล----------->
-          </span>
-        </div>
-
-      </div>
-    </div>
-    <!--team-2-->
-    <!--team-3-->
-    <div class="col-lg-4">
-      <div class="our-team-main">
-
-        <div class="team-front">
-
-          <h3>เที่ยง</h3>
-          <p>12.00 - 13.00 น</p>
-          <form>
-            <div class="multiselect">
-              <div class="selectBox" onclick="showCheckboxes()">
-                <select>
-                  <option></option>
-                </select>
-                <div class="overSelect"></div>
-              </div>
-              <div id="checkboxes">
-                <label for="one"><input type="checkbox" id="one" />
-                  <p>First checkbox</p>
-                </label>
-              </div>
-            </div>
-          </form>
-        </div>
-        <table>
-          <tr>
-            <th>
-              <p>รายการอาหาร</p>
-            </th>
-          </tr>
-        </table>
-      </div>
-
-      <div class="team-back">
-        <span>
-          <!--------------------จุดเชื่อมข้อมูลเข้าหรือใส่ข้อมูล----------->
-          <!--------------------จุดเชื่อมข้อมูลเข้าหรือใส่ข้อมูล----------->
-          <button type="button" class="btn btn-primary mx-auto" data-toggle="modal" data-target="#product_view"><i
-              class="fa fa-search"></i> เพิ่ม</button>
-          <!--------------------จุดเชื่อมข้อมูลเข้าหรือใส่ข้อมูล----------->
-          <!--------------------จุดเชื่อมข้อมูลเข้าหรือใส่ข้อมูล----------->
-        </span>
-      </div>
-
-    </div>
+      <select name="langOpt[]" multiple id="langOpt3">
+        <option value="C++">C++</option>
+      </select><br><br>
+      <input type="submit" value="Submit">
+    </form>
+    </blockquote>
   </div>
-  <!--team-3-->
+</section>
 
-  <!--team-4-->
-  <div class="col-lg-4">
-    <div class="our-team-main">
+{% block script %}
 
-      <div class="team-front">
+<script src="{{ url_for('static',filename='js/multiselect.js') }}"></script>
+<script>
+  $('#langOpt').multiselect({
+    columns: 1,
+    placeholder: 'Select Food'
+  });
+</script>
 
-        <h3>มื้อบ่าย</h3>
-        <p>14.00 - 15.00 น</p>
-        <form>
-          <div class="multiselect">
-            <div class="selectBox" onclick="showCheckboxes()">
-              <select>
-                <option></option>
-              </select>
-              <div class="overSelect"></div>
-            </div>
-            <div id="checkboxes">
-              <label for="one"><input type="checkbox" id="one" />
-                <p>First checkbox</p>
-              </label>
-            </div>
-          </div>
-        </form>
-      </div>
-      <table>
-        <tr>
-          <th>
-            <p>รายการอาหาร</p>
-          </th>
-        </tr>
-      </table>
-    </div>
+<script>
+  $('select[multiple]').multiselect();
+  $('#langOpt2').multiselect({
+    columns: 1,
+    placeholder: 'Select Food'
+  });
+</script>
 
-    <div class="team-back">
-      <span>
-        <!--------------------จุดเชื่อมข้อมูลเข้าหรือใส่ข้อมูล----------->
-        <!--------------------จุดเชื่อมข้อมูลเข้าหรือใส่ข้อมูล----------->
-        <button type="button" class="btn btn-primary mx-auto" data-toggle="modal" data-target="#product_view"><i
-            class="fa fa-search"></i> เพิ่ม</button>
-        <!--------------------จุดเชื่อมข้อมูลเข้าหรือใส่ข้อมูล----------->
-        <!--------------------จุดเชื่อมข้อมูลเข้าหรือใส่ข้อมูล----------->
-      </span>
-    </div>
+<script>
+  $('select[multiple]').multiselect();
+  $('#langOpt3').multiselect({
+    columns: 1,
+    placeholder: 'Select Food'
+  });
+</script>
 
-  </div>
-  </div>
-  <!--team-4-->
+{% endblock %}
 
-  <!--team-5-->
-  <div class="col-lg-4">
-    <div class="our-team-main">
-
-      <div class="team-front">
-
-        <h3>มื้อเย็น</h3>
-        <p>18.00 - 20.00 น</p>
-        <form>
-          <div class="multiselect">
-            <div class="selectBox" onclick="showCheckboxes()">
-              <select>
-                <option></option>
-              </select>
-              <div class="overSelect"></div>
-            </div>
-            <div id="checkboxes">
-              <label for="one"><input type="checkbox" id="one" />
-                <p>First checkbox</p>
-              </label>
-            </div>
-          </div>
-        </form>
-      </div>
-      <table>
-        <tr>
-          <th>
-            <p>รายการอาหาร</p>
-          </th>
-        </tr>
-      </table>
-    </div>
-
-    <div class="team-back">
-      <span>
-        <!--------------------จุดเชื่อมข้อมูลเข้าหรือใส่ข้อมูล----------->
-        <!--------------------จุดเชื่อมข้อมูลเข้าหรือใส่ข้อมูล----------->
-        <button type="button" class="btn btn-primary mx-auto" data-toggle="modal" data-target="#product_view"><i
-            class="fa fa-search"></i> เพิ่ม</button>
-        <!--------------------จุดเชื่อมข้อมูลเข้าหรือใส่ข้อมูล----------->
-        <!--------------------จุดเชื่อมข้อมูลเข้าหรือใส่ข้อมูล----------->
-      </span>
-    </div>
-  </div>
-  </div>
-  <!--team-5-->
-
-  <!--team-6-->
-  <div class="col-lg-4">
-    <div class="our-team-main">
-
-      <div class="team-front">
-
-        <h3>มื้อดึก </h3>
-        <p>22.00 - 00.00 น</p>
-        <form>
-          <div class="multiselect">
-            <div class="selectBox" onclick="showCheckboxes()">
-              <select>
-                <option></option>
-              </select>
-              <div class="overSelect"></div>
-            </div>
-            <div id="checkboxes">
-              <label for="one"><input type="checkbox" id="one" />
-                <p>First checkbox</p>
-              </label>
-            </div>
-          </div>
-        </form>
-      </div>
-      <table>
-        <tr>
-          <th>
-            <p>รายการอาหาร</p>
-          </th>
-        </tr>
-      </table>
-    </div>
-
-    <div class="team-back">
-      <span>
-        <!--------------------จุดเชื่อมข้อมูลเข้าหรือใส่ข้อมูล----------->
-        <!--------------------จุดเชื่อมข้อมูลเข้าหรือใส่ข้อมูล----------->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
-          data-whatever="@mdo">เพิ่ม</button>
-        <!--------------------จุดเชื่อมข้อมูลเข้าหรือใส่ข้อมูล----------->
-        <!--------------------จุดเชื่อมข้อมูลเข้าหรือใส่ข้อมูล----------->
-      </span>
-    </div>
-  </div>
-  </div>
-  <!--team-6-->
-  <a href="about.html" class="btn btn-info ml-auto" role="button">ยืนยัน</a>
-
-  <!--Team popup 1 -->
-  <!--Team popup 1 -->
-  <!--Team popup 1 -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">New message
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-          <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="" alt="อาหาร">
-            <div class="card-body">
-              <!-- checkbox -->
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                card's content.</p>
-              <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="customCheck1">
-                <label class="custom-control-label" for="customCheck1"></label>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
-          <button type="button" class="btn btn-primary">เลื่อก</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  </div>
-  </div>
-  </div>
-  </div>
-  </div>
-  </div>
-  {% endblock%}
-
-  {% block body %}
-  <script src="{{ url_for('static',filename='js/multiselect.js') }}"></script>
-  {% endblock%}
+{% endblock%}

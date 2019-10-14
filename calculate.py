@@ -1,9 +1,9 @@
+import numpy as np
 class Nutrients:
     #Method
     def Calculate(self,cal,p,c,f):
-        a = (float(cal)*p)/100
-        b = (float(cal)*c)/100
-        c = (float(cal)*f)/100
+        a = np.array([p,c,f])
+        a = (a*cal)/100
         result = []
         result.insert(0,a)
         result.insert(1,b)
@@ -16,7 +16,7 @@ class Nutrients:
 
     def Total_Calculate(self,n):
         Total = []
-        Total.insert(0,(4*n[0])+(4*n[1])+(9*n[2]))
+        Total.insert(0,(4*n[0])+(9*n[1])+(9*n[2]))
         return Total.pop()
 
 Call = Nutrients()

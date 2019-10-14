@@ -1,9 +1,10 @@
 # Import
 from flask import Flask, render_template, request, redirect, url_for, jsonify, session, make_response
+from flask_mysqldb import MySQL
 #from flask.ext.bootstrap import Bootstrap
 from forms import RegistrationForm, LoginForm
-from flask_mysqldb import MySQL
 from calculate import Nutrients, Call
+from sel import sel
 
 app = Flask(__name__)
 
@@ -14,6 +15,7 @@ app.config['MYSQL_PASSWORD'] = ''
 app.config['MYSQL_DB'] = 'nce'
 
 mysql = MySQL(app)
+
 
 @app.route("/")
 def index():
@@ -29,22 +31,45 @@ def homepage():
 def about():
     return render_template('about.html')
 
+
 @app.route("/calendar")
 def calendar():
     return render_template('calendar.html')
 
-@app.route("/cal")
-def cal():
-    cur = mysql.connection.cursor()
-    cur.execute("""SELECT id_nutrients,name_nutrients FROM nutrients WHERE group_nutrients = 'p'""")
-    data = cur.fetchall()
-    cur.close()
-    return render_template('Calculatecalories.html', rowsp=data)
 
-@app.route("/call" , methods=['GET', 'POST'])
+@app.route("/cal", methods=['GET'])
+def cal():
+    if request.method == 'GET':
+        food = sel.select1()
+        datap = sel.select('p')
+        datac = sel.select('c')
+        dataf = sel.select('f')
+    return render_template('Calculatecalories.html', p=datap, c=datac, f=dataf, food=food)
+
+@app.route("/process", methods=['GET', 'POST'])
+def process():
+    if request.method == 'POST':
+        a = request.form.get('foodname')
+        pro = request.form.get('P')
+        car = request.form.get('C')
+        fat = request.form.get('F')
+        volumep = request.form.get('volumep')
+        volumec = request.form.get('volumec')
+        volumef = request.form.get('volumef')
+    return '''<h1>{}</h1>
+        <h1>{} {} {}</h1>
+        <h1>{} {} {}'''.format(a,pro,car,fat,volumep,volumec,volumef)
+
+
+@app.route("/test")
+def test():
+    return render_template('test.html')
+
+
+@app.route("/call", methods=['GET', 'POST'])
 def call():
     select = request.form.get('select')
-    return(str(select)) 
+    return(str(select))
 
 
 @app.route("/his")

@@ -1,0 +1,47 @@
+.card {
+	> .table {
+		border-right: 0;
+		border-left: 0;
+		margin-bottom: 0;
+		font-size: 15px;
+
+		&:last-child {
+			border-bottom: 0;
+			font-size: 15px;
+		}
+
+		&:not(.table-sm) th,
+        &:not(.table-sm) td {
+			padding: 0.75rem 1.25rem;
+			font-size: 15px;
+		}
+
+		td:first-child,
+		th:first-child {
+			border-left: 0;
+			font-size: 15px;
+		}
+
+		td:last-child,
+		th:last-child {
+			border-right: 0;
+			font-size: 15px;
+		}
+
+		tr:first-child td,
+		tr:first-child th {
+			border-top: 0;
+			font-size: 15px;
+		}
+
+		tr:last-child td {
+			border-bottom: 0;
+			font-size: 15px;
+		}
+	}
+
+	.card-header + .table {
+		border-top: 0;
+		font-size: 16px;
+	}
+}
