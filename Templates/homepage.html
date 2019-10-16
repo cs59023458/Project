@@ -13,10 +13,9 @@ HomePage
         <p class="mb-80 mr-5"> .</p>
         <span class="font-secondary text-dark mr-3 mr-sm-5">Follow</span>
         <ul class="list-inline d-inline-block mb-5">
-          <li class="list-inline-item mx-3"><a href="www.facebook.com" class="text-dark"><i class="ti-facebook"></i></a></li>
-          <li class="list-inline-item mx-3"><a href="www.twitter.com" class="text-dark"><i class="ti-twitter-alt"></i></a></li>
-          <li class="list-inline-item mx-3"><a href="www.linkedin.com" class="text-dark"><i class="ti-linkedin"></i></a></li>
-          <li class="list-inline-item mx-3"><a href="www.github.com" class="text-dark"><i class="ti-github"></i></a></li>
+          <li class="list-inline-item mx-3"><a href="#" class="text-dark"><i class="ti-facebook"></i></a>
+          </li>
+
         </ul>
       </div>
       <div class="col-lg-6 text-right">
@@ -38,9 +37,8 @@ HomePage
           <div class="card-img-overlay">
             <div class="card-content">
               <p class="text-uppercase">LifeStyle</p>
-              <h4 class="card-title mb-4"><a class="text-white" href="">Organize Your Life With 10
-                  Simple rule</a></h4>
-              <a class="btn btn-outline-light" href="">read more</a>
+              <h4 class="card-title mb-4"><a class="text-white" href="blog-single.html">ผัดซีอิ้วหมู</a></h4>
+              <a class="btn btn-outline-light" href="{{ url_for('static',filename='food/ผัดซีอิ้วหมู.html') }}">อ่านเพิ่มเติมad </a>
             </div>
           </div>
         </article>
@@ -52,9 +50,8 @@ HomePage
           <div class="card-img-overlay">
             <div class="card-content">
               <p class="text-uppercase">LifeStyle</p>
-              <h4 class="card-title mb-4"><a class="text-white" href="">Organize Your Life With 10
-                  Simple rule</a></h4>
-              <a class="btn btn-outline-light" href="">read more</a>
+              <h4 class="card-title mb-4"><a class="text-white" href="blog-single.html">ก๋วยเตี๋ยวไก</a></h4>
+              <a class="btn btn-outline-light" href="{{ url_for('static',filename='food/ก๋วยเตี๋ยวไก่.html') }}">อ่านเพิ่มเติม</a>
             </div>
           </div>
         </article>
@@ -66,9 +63,8 @@ HomePage
           <div class="card-img-overlay">
             <div class="card-content">
               <p class="text-uppercase">LifeStyle</p>
-              <h4 class="card-title mb-4"><a class="text-white" href="">Organize Your Life With 10
-                  Simple rule</a></h4>
-              <a class="btn btn-outline-light" href="">read more</a>
+              <h4 class="card-title mb-4"><a class="text-white" href="blog-single.html">ข้าวหมูกรอบ</a></h4>
+              <a class="btn btn-outline-light" href="{{ url_for('static',filename='food/ข้าวหมูกรอบ.html') }}">อ่านเพิ่มเติม</a>
             </div>
           </div>
         </article>
@@ -80,9 +76,9 @@ HomePage
           <div class="card-img-overlay">
             <div class="card-content">
               <p class="text-uppercase">LifeStyle</p>
-              <h4 class="card-title mb-4"><a class="text-white" href="">Organize Your Life With 10
-                  Simple rule</a></h4>
-              <a class="btn btn-outline-light" href="">read more</a>
+              <h4 class="card-title mb-4"><a class="text-white" href="blog-single.html">ข้าวซอยไก่</a>
+              </h4>
+              <a class="btn btn-outline-light" href="{{ url_for('static',filename='food/ข้าวซอยไก่.html') }}">อ่านเพิ่มเติม</a>
             </div>
           </div>
         </article>
@@ -94,9 +90,9 @@ HomePage
           <div class="card-img-overlay">
             <div class="card-content">
               <p class="text-uppercase">LifeStyle</p>
-              <h4 class="card-title mb-4"><a class="text-white" href="">Organize Your Life With 10
-                  Simple rule</a></h4>
-              <a class="btn btn-outline-light" href="">read more</a>
+              <h4 class="card-title mb-4"><a class="text-white" href="blog-single.html">ผัดไทย</a>
+              </h4>
+              <a class="btn btn-outline-light" href="{{ url_for('static',filename='food/ผัดไทยหมู.html') }}">อ่านเพิ่มเติม</a>
             </div>
           </div>
         </article>
@@ -118,21 +114,21 @@ HomePage
           </div>
           <div class="post-content">
             <ul class="list-inline d-flex justify-content-between border-bottom post-meta pb-2 mb-4">
-              <li class="list-inline-item"><i class="ti-calendar mr-2"></i>June 2, 2018</li>
-              <li class="list-inline-item"><i class="ti-alarm-clock mr-2"></i><span class="eta">8 min</span> read</li>
+
+              <li class="list-inline-item"><i class="ti-alarm-clock mr-2"></i><span class="eta">8
+                  min</span> read</li>
             </ul>
-            <h4 class="mb-4"><a href="" class="text-dark">Lorem ipsum dolor sit amet, consectetur
-                adipisicing
-                elit</a></h4>
-            <p class="mb-0 post-summary">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-              incididunt
-              ut labore et
-              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-              ea commodo consequat.</p>
-            <a class="btn btn-transparent mb-4" href="">Continue...</a>
+            <h4 class="mb-4"><a href="blog-single.html" class="text-dark">
+                กินเจช่วยให้อวัยวะภายในได้หยุดพัก</a></h4>
+            <p class="mb-0 post-summary">อาหารเจส่วนใหญ่จะเน้นพืชผักเป็นหลัก
+              ผสมกับอาหารประเภทคาร์โบไฮเดรต และโปรตีนจากถั่วซึ่งย่อยง่ายกว่าเนื้อสัตว์และไขมันมาก
+              จึงทำให้ระบบย่อยอาหารได้หยุดพักจากการทำงานหนัก ๆ
+              มาตลอดทั้งปี ทั้งกระเพาะอาหาร ลำไส้เล็ก ลำไส้ใหญ่ ถุงน้ำดี ก็จะมีความแข็งแรงมากขึ้นด้วย
+            </p>
+            <a class="btn btn-transparent mb-4" href="{{ url_for('static',filename='Content/อาหารเจ.html') }}">อ่านต่อ...</a>
             <div class="author">
               <span class="d-block">Post by</span>
-              <p>Jhon Abraham</p>
+              <p>P</p>
             </div>
           </div>
         </article>
@@ -145,21 +141,27 @@ HomePage
           </div>
           <div class="post-content">
             <ul class="list-inline d-flex justify-content-between border-bottom post-meta pb-2 mb-4">
-              <li class="list-inline-item"><i class="ti-calendar mr-2"></i>June 2, 2018</li>
-              <li class="list-inline-item"><i class="ti-alarm-clock mr-2"></i><span class="eta">8 min</span> read</li>
+
+              <li class="list-inline-item"><i class="ti-alarm-clock mr-2"></i><span class="eta">8
+                  min</span> read</li>
             </ul>
-            <h4 class="mb-4"><a href="" class="text-dark">Lorem ipsum dolor sit amet, consectetur
-                adipisicing
-                elit</a></h4>
-            <p class="mb-0 post-summary">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-              incididunt
-              ut labore et
-              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-              ea commodo consequat.</p>
-            <a class="btn btn-transparent mb-4" href="">Continue...</a>
+            <h4 class="mb-4"><a href="blog-single.html" class="text-dark">อาหารมังสวิรัติ
+                คืออาหารจำพวกผักและผลไม้ ซึ่งทำให้ได้รับกากใยอาหาร
+                อาหารมังสวิรัตินั้นจะไม่มีเนื้อสัตว์เลย</a></h4>
+            <p class="mb-0 post-summary">อาหารมังสวิรัตินั้น แบ่งออกได้เป็น 3 ประเภทคือ
+
+              มังสวิรัติประเภทเคร่งครัด เป็นมังสวิรัติที่กินอาหารจำพวกพืชผักผลไม้เพียงอย่างเดียว
+              ไม่มีอาหารจำพวกเนื้อสัตว์ ไข่ นม หรือ ผลิตภัณฑ์จากไข่และนม
+              เป็นส่วนประกอบของอาหารนั้นๆเลย
+              มังสวิรัติประเภทที่มีการดื่มนม
+              เป็นมังสวิรัติที่จะมีนมและผลิตภัณฑ์ของนมนอกเหนือจากพืชผักผลไม้
+              แต่ไม่มีเนื้อสัตว์และไข่เป็นส่วนประกอบของอาหาร
+              มังสวิรัติประเภทดื่มนมและกินไข่ อาหารมังสวิรัติประเภทนี้มีไข่ นม
+              และผลิตภัณฑ์ของนมนอกเหนือจากอาหารจากพืช แต่ไม่มีเนื้อสัตว์เลย</p>
+            <a class="btn btn-transparent mb-4" href="{{ url_for('static',filename='Content/อาหารมังสวิรัติ.html') }}">อ่านต่อ...</a>
             <div class="author">
               <span class="d-block">Post by</span>
-              <p>Jhon Abraham</p>
+              <p> Ab</p>
             </div>
           </div>
         </article>
@@ -172,48 +174,56 @@ HomePage
           </div>
           <div class="post-content">
             <ul class="list-inline d-flex justify-content-between border-bottom post-meta pb-2 mb-4">
-              <li class="list-inline-item"><i class="ti-calendar mr-2"></i>June 2, 2018</li>
-              <li class="list-inline-item"><i class="ti-alarm-clock mr-2"></i><span class="eta">8 min</span> read</li>
+
+              <li class="list-inline-item"><i class="ti-alarm-clock mr-2"></i><span class="eta">8
+                  min</span> read</li>
             </ul>
-            <h4 class="mb-4"><a href="" class="text-dark">Lorem ipsum dolor sit amet, consectetur
-                adipisicing
-                elit</a></h4>
-            <p class="mb-0 post-summary">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-              incididunt
-              ut labore et
-              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-              ea commodo consequat.</p>
-            <a class="btn btn-transparent mb-4" href="">Continue...</a>
+            <h4 class="mb-4"><a href="blog-single.html" class="text-dark">อาหารคลีน คืออะไร</a></h4>
+            <p class="mb-0 post-summary">อาหารคลีน (Clean Food) หรือที่คนส่วนใหญ่เรียกกันว่า กินคลีน
+              (Eat Clean, Clean Eating) คือ การทานอาหารที่สด สะอาด
+              โดยเน้นการทานอาหารแบบธรรมชาติไม่ผ่านการปรุงแต่ง และขัดสีด้วยสารเคมีต่างๆ
+              หรือกระบวนการหมักดอง รวมถึงอาหารขยะ และอาหารสำเร็จรูปที่มีแป้ง ผงชูรส
+              และโซเดียมในปริมาณสูง หรืออาจพูดให้เข้าใจได้ง่ายว่า
+              การทานอาหารคลีนนั้นเป็นการกินอาหารให้ถูกหลักโภชนาการ
+              โดยทานอาหารอย่างพอเพียงครบสัดส่วนทั้ง 5 หมู่
+              และอาหารเหล่านั้นต้องไม่มีสารปนเปื้อนนั่นเอง
+              ซึ่งอาหารคลีนนั้นอาจผ่านการปรุงแต่งบ้างเล็กน้อย หรืออาจจะไม่ผ่านการปรุงแต่งเลยก็เป็นได้
+              เช่นใช้เกลือในการปรุงรสเพียงเล็กน้อยแทนน้ำปลา
+              หรืออาจจะเป็นซีอิ๊วขาวชนิดที่ไม่มีผงชูรสเจือปน และจะไม่ใช้ผงชูรสในการปรุงอาหาร เป็นต้น
+            </p>
+            <a class="btn btn-transparent mb-4" href="{{ url_for('static',filename='Content/อาหารคลีนจานเดียว.html') }}">อ่านต่อ...</a>
             <div class="author">
               <span class="d-block">Post by</span>
-              <p>Jhon Abraham</p>
+              <p>J</p>
             </div>
           </div>
         </article>
       </div>
       <div class="col-12 mb-100">
         <article data-file="" data-target="article" class="article-full-width article-right">
+
           <div class="post-image">
             <img class="img-fluid" src="{{ url_for('static',filename='images/masonary-post/post-5.jpg') }}"
               alt="post-thumb">
           </div>
           <div class="post-content">
             <ul class="list-inline d-flex justify-content-between border-bottom post-meta pb-2 mb-4">
-              <li class="list-inline-item"><i class="ti-calendar mr-2"></i>June 2, 2018</li>
-              <li class="list-inline-item"><i class="ti-alarm-clock mr-2"></i><span class="eta">8 min</span> read</li>
+
+              <li class="list-inline-item"><i class="ti-alarm-clock mr-2"></i><span class="eta">8
+                  min</span> read</li>
             </ul>
-            <h4 class="mb-4"><a href="" class="text-dark">Lorem ipsum dolor sit amet, consectetur
-                adipisicing
-                elit</a></h4>
-            <p class="mb-0 post-summary">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-              incididunt
-              ut labore et
-              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-              ea commodo consequat.</p>
-            <a class="btn btn-transparent mb-4" href="">Continue...</a>
+            <h4 class="mb-4"><a href="blog-single.html" class="text-dark">
+                อาหารคลีนจานเดียว</a></h4>
+            <p class="mb-0 post-summary"> หนึ่งในอาหารที่เป็นที่นิยมของคนไทยคือ“หมูกรอบ”
+              ไม่ว่าจะเป็นข้าวหมูกรอบ หมูกรอบผัดพริกแกง หมูกรอบผัดกะเพรา หมูกรอบผัดพริกขิง
+              ก๋วยจั๊บใส่หมูกรอบ และอื่นๆ จากข้อมูลของสำนักโภชนาการ กรมอนามัย กระทรวงสาธาณสุข
+              ระบุว่าพลังงานจากหมูกรอบ 100 กรัม (7-10 ชิ้นคำ) ให้พลังงานประมาณ 385-420 กิโลแคลอรี่
+              ไขมัน 30 กรัม โดยหากเป็นข้าวหมูกรอบพลังงานก็จะเพิ่มขึ้น เป็น 550-600 กิโลแคลอรี่
+              และหากเป็นเมนูหมูกรอบที่มีการนำไปผัดกับน้ำมันก็จะทำให้ยิ่งเพิ่มพลังงานมากขึ้น</p>
+            <a class="btn btn-transparent mb-4" href="{{ url_for('static',filename='Content/ข้าวหมูกรอบ.html') }}">อ่านต่อ...</a>
             <div class="author">
               <span class="d-block">Post by</span>
-              <p>Jhon Abraham</p>
+              <p>am</p>
             </div>
           </div>
         </article>
@@ -226,21 +236,22 @@ HomePage
           </div>
           <div class="post-content">
             <ul class="list-inline d-flex justify-content-between border-bottom post-meta pb-2 mb-4">
-              <li class="list-inline-item"><i class="ti-calendar mr-2"></i>June 2, 2018</li>
-              <li class="list-inline-item"><i class="ti-alarm-clock mr-2"></i><span class="eta">8 min</span> read</li>
+
+              <li class="list-inline-item"><i class="ti-alarm-clock mr-2"></i><span class="eta">8
+                  min</span> read</li>
             </ul>
-            <h4 class="mb-4"><a href="" class="text-dark">Lorem ipsum dolor sit amet, consectetur
-                adipisicing
-                elit</a></h4>
-            <p class="mb-0 post-summary">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-              incididunt
-              ut labore et
-              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-              ea commodo consequat.</p>
-            <a class="btn btn-transparent mb-4" href="">Continue...</a>
+            <h4 class="mb-4"><a href="blog-single.html" class="text-dark"></a>อาหารเพื่อสุขภาพ</a></h4>
+            <p class="mb-0 post-summary">หมายถึงอาหารที่เมื่อรับเข้าไปแฟล้วน้ำหนักจะต้องอยู่ในเกฑ์ปรกติ
+              ไม่เป็นโรคเรื้อรัง โดยการเพิ่มอาหารผักและผลไม้ ลดเกลือ ลดน้ำตาล ลดไขมัน อาหารสุขภาพ
+              องค์การอนามัยโรคได้นิยามเรื่องอาหารสุขภาพว่า การรับประทานอาหารที่ไม่มีคุณภาพ
+              ร่วมกับการไม่ออกกำลังกายจะเป็นบ่อเกิดโรคเรื้อรัง
+              องค์การอนามัยโลกได้แนะนำอาหารสุขภาพดังนี้ รับประทานอาหารที่สมดุลและมีน้ำหนักที่ปรกติ
+              ให้ลดอาหารไขมัน และหลีกเลี่ยงไขมันอิ่มตัว Saturated fat,Transfatty acid
+              ให้รับประทานอาหารพวกผัก ผลไม้ ธัญพืขเพิ่มมากขึ้น ลดอาหารที่มีน้ำตาล ลดอาหารเค็ม</p>
+            <a class="btn btn-transparent mb-4" href="{{ url_for('static',filename='Content/อาหารเพื่อสุขภาพง่ายๆ.html') }}">อ่านต่อ...</a>
             <div class="author">
               <span class="d-block">Post by</span>
-              <p>Jhon Abraham</p>
+              <p>A</p>
             </div>
           </div>
         </article>
@@ -253,21 +264,31 @@ HomePage
           </div>
           <div class="post-content">
             <ul class="list-inline d-flex justify-content-between border-bottom post-meta pb-2 mb-4">
-              <li class="list-inline-item"><i class="ti-calendar mr-2"></i>June 2, 2018</li>
-              <li class="list-inline-item"><i class="ti-alarm-clock mr-2"></i><span class="eta">8 min</span> read</li>
+
+              <li class="list-inline-item"><i class="ti-alarm-clock mr-2"></i><span class="eta">8
+                  min</span> read</li>
             </ul>
-            <h4 class="mb-4"><a href="" class="text-dark">Lorem ipsum dolor sit amet, consectetur
-                adipisicing
-                elit</a></h4>
-            <p class="mb-0 post-summary">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-              incididunt
-              ut labore et
-              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-              ea commodo consequat.</p>
-            <a class="btn btn-transparent mb-4" href="">Continue...</a>
+            <h4 class="mb-4"><a href="blog-single.html" class="text-dark">โจ๊ก</a></h4>
+            <p class="mb-0 post-summary">โจ๊กเป็นอาหารเช้าของคนไทยเรามานานแล้ว
+              เพราะไว้ใจได้เรื่องคุณค่าอาหารว่ามีเพียบไม่แพ้ของแพงๆเลยทีเดียว
+
+              ขิง >> ทำให้ย่อยง่าย ช่วยขับลม ทำให้เลือดลมเดินไม่สะดวก กระตุ้นการเผาผลาญ
+
+              ไข่ >> มีคุณค่าอาหารครบถ้วน ย่อยง่ายแต่หนักท้อง ทำให้อิ่มทน
+
+              หมูสับ >> มีโปรตีน ช่วยซ่อมแซมส่วนที่สึกหรอ ยิ่งถ้าเนื้อหมูคลุกกระเทียมสับ
+              ก็จะช่วยต้านสารก่อมะเร็งได้อีกอย่างหนึ่ง
+
+              ข้าวสาลี >> ช่วยให้ระบบขับถ่ายทำงานดี ทำให้ร่างกายเย็น เหมาะกับคนที่เป็นไข้
+
+              ยิ่งถ้าเป็นโจ๊กที่ทำจากข้าวกล้องจะมีกากใยสูง เหมาะสำหรับคนท้องผูก และมีวิตามินเอ บี
+              ธาตุเหล็ก แคลเซียม ป้องกันมะเร็ง บำรุงสมอง
+
+            </p>
+            <a class="btn btn-transparent mb-4" href="blog-single.html">อ่านต่อ...</a>
             <div class="author">
               <span class="d-block">Post by</span>
-              <p>Jhon Abraham</p>
+              <p>m</p>
             </div>
           </div>
         </article>

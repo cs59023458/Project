@@ -5,6 +5,7 @@ from flask_mysqldb import MySQL
 from forms import RegistrationForm, LoginForm
 from calculate import Nutrients, Call
 from sel import sel
+import numpy as np
 
 app = Flask(__name__)
 
@@ -23,7 +24,7 @@ def index():
 
 # Home Page
 @app.route("/home")
-def homepage():
+def homepage(): 
     return render_template('homepage.html')
 
 
@@ -40,25 +41,55 @@ def calendar():
 @app.route("/cal", methods=['GET'])
 def cal():
     if request.method == 'GET':
-        food = sel.select1()
+        food = sel.select_food('self')
         datap = sel.select('p')
         datac = sel.select('c')
         dataf = sel.select('f')
     return render_template('Calculatecalories.html', p=datap, c=datac, f=dataf, food=food)
 
+
 @app.route("/process", methods=['GET', 'POST'])
 def process():
     if request.method == 'POST':
-        a = request.form.get('foodname')
-        pro = request.form.get('P')
+        a = request.form.get('foodname', type=str)
+        name = sel.select_food_name(a)
+        pro = request.form.get('P', type=str)  # str
         car = request.form.get('C')
         fat = request.form.get('F')
-        volumep = request.form.get('volumep')
-        volumec = request.form.get('volumec')
-        volumef = request.form.get('volumef')
-    return '''<h1>{}</h1>
-        <h1>{} {} {}</h1>
-        <h1>{} {} {}'''.format(a,pro,car,fat,volumep,volumec,volumef)
+        # ปริมาณที่รับมาจาก slider ------------------------
+        volumep = int(request.form.get('volumep'))  # str
+        volumec = int(request.form.get('volumec'))
+        volumef = int(request.form.get('volumef'))
+        # ----------------------------------------------
+        # ปริมาณต่อ 100 g +++++++++++++++++++++++++++++++
+        P = list(sel.select_nutrients(pro))  # tuple
+        C = list(sel.select_nutrients(car))
+        F = list(sel.select_nutrients(fat))
+        # ++++++++++++++++++++++++++++++++++++++++++++++
+        #ปริมาณจริงของสารอาหารแต่ละตัว#####################
+        ValP = list(Call.Calculate(volumep, P))  # ปริมาณของ  p c f จริง
+        ValC = list(Call.Calculate(volumec, C))
+        ValF = list(Call.Calculate(volumef, F))
+        V1 = np.asanyarray(ValP)
+        V2 = np.asanyarray(ValC)
+        V3 = np.asanyarray(ValF)
+        ###############################################
+        # พลังงานของสารอาหารแต่ละตัว-----------------------
+        EnP = Call.Total_Calculate(ValP)
+        EnC = Call.Total_Calculate(ValC)
+        EnF = Call.Total_Calculate(ValF)
+        E1 = EnP.sum()
+        E2 = EnC.sum()
+        E3 = EnF.sum()
+        # ----------------------------------------------
+        # พลังงานทั้งหมด++++++++++++++++++++++++++++++++++
+        En = Call.Energy(EnP, EnC, EnF)
+        # ++++++++++++++++++++++++++++++++++++++++++++++
+        return render_template('chart.html',V1=V1.sum(),V2=V2.sum(),V3=V3.sum())
+
+#@app.route("/chart")
+#def chart():
+#    return render_template('chart.html')
 
 
 @app.route("/test")
@@ -74,7 +105,8 @@ def call():
 
 @app.route("/his")
 def his():
-    return render_template('his.html')
+    food = sel.select_food('self')
+    return render_template('his.html', foods=food)
 
 
 '''

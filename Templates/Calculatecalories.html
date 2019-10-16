@@ -38,18 +38,6 @@
 </style>
 {% endblock %}
 
-{% block script %}
-<script>
-    var slider = document.getElementById("myRange");
-    var output = document.getElementById("demo");
-    output.innerHTML = slider.value;
-
-    slider.oninput = function () {
-        output.innerHTML = this.value;
-    }
-</script>
-{% endblock %}
-
 {% block content %}
 <section>
     <div class="container">
@@ -70,24 +58,30 @@
                                 {% endfor %}
                             </select></p>
                         <div class="slidecontainer">
-                            <input type="range" min="1" max="2000" value="0" class="slider" name="volumep">
+                            <input type="range" min="1" max="2000" value="0" class="slider" name="volumep" id="volumep">
+                            <p>Value: <span id="p1"></span></p>
                         </div><br>
+
                         <p>คาร์โบไฮเดรต : <select name="C">
                                 {% for row in c %}
                                 <option value="{{row.0}}">{{row.1}}</option>
                                 {% endfor %}
                             </select></p>
                         <div class="slidecontainer">
-                            <input type="range" min="1" max="2000" value="0" class="slider" name="volumec">
+                            <input type="range" min="1" max="2000" value="0" class="slider" name="volumec" id="volumec">
+                            <p>Value: <span id="c1"></span></p>
                         </div><br>
-                        <p>ไขมัน : <select name="F">
+
+                        <p>ไขมัน : <select name="F" ">
                                 {% for row in f %}
-                                <option value="{{row.0}}">{{row.1}}</option>
+                                <option value=" {{row.0}}">{{row.1}}</option>
                                 {% endfor %}
                             </select></p>
                         <div class="slidecontainer">
-                            <input type="range" min="1" max="2000" value="0" class="slider" name="volumef">
+                            <input type="range" min="1" max="2000" value="0" class="slider" name="volumef" id="volumef">
+                            <p>Value: <span id="f1"></span></p>
                         </div><br>
+
                         <input type="submit" value="Calculate">
                     </form>
                 </blockquote>
@@ -95,4 +89,30 @@
         </div>
     </div>
 </section>
+
+{% block script %}
+<script>
+    var slider1 = document.getElementById("volumep");
+    var slider2 = document.getElementById("volumec");
+    var slider3 = document.getElementById("volumef");
+    var output1 = document.getElementById("p1");
+    var output2 = document.getElementById("c1");
+    var output3 = document.getElementById("f1");
+    output1.innerHTML = slider1.value;
+    output2.innerHTML = slider2.value;
+    output3.innerHTML = slider3.value;
+
+    slider1.oninput = function () {
+        output1.innerHTML = this.value;
+    }
+    slider2.oninput = function () {
+        output2.innerHTML = this.value;
+    }
+    slider3.oninput = function () {
+        output3.innerHTML = this.value;
+    }
+</script>
+{% endblock %}
+
+
 {% endblock %}

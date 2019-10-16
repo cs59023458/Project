@@ -1,4 +1,9 @@
 {% extends "layout.html" %}
+
+{% block title %}
+
+{% endblock %}
+
 {% block head %}
 <!-- jQuery library -->
 <script src="{{ url_for('static',filename='plugins/jQuery/jquery.min.js') }}"></script>
@@ -19,16 +24,22 @@
     <form>
       เช้า
       <select name="langOpt[]" multiple id="langOpt1">
-        <option value="C++">C++</option>
+          {% for row in foods %}
+          <option value="{{row.0}}">{{row.1}}</option>
+          {% endfor %}
       </select>
       เที่ยง
       <select name="langOpt[]" multiple id="langOpt2">
-        <option value="C++">C++</option>
+          {% for row in foods %}
+          <option value="{{row.0}}">{{row.1}}</option>
+          {% endfor %}
       </select>
       เย็น
 
       <select name="langOpt[]" multiple id="langOpt3">
-        <option value="C++">C++</option>
+          {% for row in foods %}
+          <option value="{{row.0}}">{{row.1}}</option>
+          {% endfor %}
       </select><br><br>
       <input type="submit" value="Submit">
     </form>
