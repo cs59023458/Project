@@ -1,7 +1,6 @@
-# Import
+#Import
 from flask import Flask, render_template, request, redirect, url_for, jsonify, session, make_response
 from flask_mysqldb import MySQL
-#from flask.ext.bootstrap import Bootstrap
 from forms import RegistrationForm, LoginForm
 from calculate import Nutrients, Call
 from sel import sel
@@ -66,15 +65,15 @@ def process():
         C = list(sel.select_nutrients(car))
         F = list(sel.select_nutrients(fat))
         # ++++++++++++++++++++++++++++++++++++++++++++++
-        #ปริมาณจริงของสารอาหารแต่ละตัว#####################
+        # ปริมาณจริงของสารอาหารแต่ละตัว ####################
         ValP = list(Call.Calculate(volumep, P))  # ปริมาณของ  p c f จริง
         ValC = list(Call.Calculate(volumec, C))
         ValF = list(Call.Calculate(volumef, F))
         V1 = np.asanyarray(ValP)
         V2 = np.asanyarray(ValC)
         V3 = np.asanyarray(ValF)
-        ###############################################
-        # พลังงานของสารอาหารแต่ละตัว-----------------------
+        ################################################
+        # พลังงานของสารอาหารแต่ละตัว ----------------------
         EnP = Call.Total_Calculate(ValP)
         EnC = Call.Total_Calculate(ValC)
         EnF = Call.Total_Calculate(ValF)
@@ -82,15 +81,10 @@ def process():
         E2 = EnC.sum()
         E3 = EnF.sum()
         # ----------------------------------------------
-        # พลังงานทั้งหมด++++++++++++++++++++++++++++++++++
+        # พลังงานทั้งหมด +++++++++++++++++++++++++++++++++
         En = Call.Energy(EnP, EnC, EnF)
         # ++++++++++++++++++++++++++++++++++++++++++++++
-        return render_template('chart.html',V1=V1.sum(),V2=V2.sum(),V3=V3.sum())
-
-#@app.route("/chart")
-#def chart():
-#    return render_template('chart.html')
-
+        return render_template('chart.html',V1=V1.sum(),V2=V2.sum(),V3=V3.sum(),En=En,EnP=EnP,EnC=EnC,EnF=EnF)
 
 @app.route("/test")
 def test():

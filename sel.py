@@ -41,7 +41,6 @@ class sel:
         cur.close()
         return data
 
-
     #def insert():
      #   cur = mysql.connection.cursor()
       #  cur.execute("INSERT INTO `member` (`fname`,`lname`,`phone`) values(%s,%s,%s)")

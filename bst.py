@@ -24,6 +24,7 @@ class Node:
         if (self.value == data):
             return True
         else:
+            pass
 
 class Tree:
     def __init__(self):
