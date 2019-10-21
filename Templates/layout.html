@@ -45,7 +45,7 @@
     <!-- dividers -->
     <header class="navigation">
         <nav class="navbar navbar-expand-lg navbar-light">
-            <a class="navbar-brand" href="{{ url_for('homepage') }}">
+            <a class="navbar-brand" href="{{ url_for('index') }}">
                 <img class="img-fluid" src="{{ url_for('static',filename='images/nce.png') }}" alt="parsa"></a>
             <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navogation"
                 aria-controls="navogation" aria-expanded="false" aria-label="Toggle navigation">
@@ -54,7 +54,7 @@
             <div class="collapse navbar-collapse text-center" id="navogation">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link text-uppercase text-dark" href="{{ url_for('homepage') }}">หน้าหลัก</a>
+                        <a class="nav-link text-uppercase text-dark" href="{{ url_for('index') }}">หน้าหลัก</a>
                     </li>
                     <li class="nav-item dropdown">
 
@@ -63,7 +63,7 @@
                         <a class="nav-link text-uppercase text-dark" href="Profile.html">โปรไฟล์</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-uppercase text-dark" href="{{ url_for('cal') }}">คำนวณ</a>
+                        <a class="nav-link text-uppercase text-dark" href="{{ url_for('calculate') }}">คำนวณ</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-uppercase text-dark" href="{{ url_for('his') }}">จัดตาราง</a>
@@ -72,7 +72,7 @@
                         <a class="nav-link text-uppercase text-dark" href="{{ url_for('calendar') }}">ประวัติ</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-uppercase text-dark" href="{{ url_for('homepage') }}">ออกจากระบบ</a>
+                        <a class="nav-link text-uppercase text-dark" href="{{ url_for('index') }}">ออกจากระบบ</a>
                     </li>
                 </ul>
                 <form class="form-inline position-relative ml-lg-4">
@@ -107,7 +107,6 @@
     <script src="{{ url_for('static',filename='plugins/reading-time/readingTime.min.js') }}"></script>
 
     <!-- Main Script -->
-    <script src="{{ url_for('static',filename='js/ev.js') }}"></script>
     <script src="{{ url_for('static',filename='js/script.js') }}"></script>
     {% block script %}
 

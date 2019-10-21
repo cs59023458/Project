@@ -16,25 +16,19 @@ app.config['MYSQL_DB'] = 'nce'
 
 mysql = MySQL(app)
 
-
+# Home Page
 @app.route("/")
 def index():
     return render_template('index.html')
 
-@app.route("/combine")
-def combine():
+@app.route("/calculate")
+def calculate():
     if request.method == 'GET':
         food = sel.select_food('self')
         datap = sel.select('p')
         datac = sel.select('c')
         dataf = sel.select('f')
-    return render_template('Combine.html', p=datap, c=datac, f=dataf, food=food)
-
-# Home Page
-@app.route("/home")
-def homepage(): 
-    return render_template('homepage.html')
-
+    return render_template('calculatecalories.html', p=datap, c=datac, f=dataf, food=food)
 
 @app.route("/about")
 def about():
@@ -44,16 +38,6 @@ def about():
 @app.route("/calendar")
 def calendar():
     return render_template('calendar.html')
-
-
-@app.route("/cal", methods=['GET'])
-def cal():
-    if request.method == 'GET':
-        food = sel.select_food('self')
-        datap = sel.select('p')
-        datac = sel.select('c')
-        dataf = sel.select('f')
-    return render_template('Calculatecalories.html', p=datap, c=datac, f=dataf, food=food)
 
 
 @app.route("/process", methods=['POST'])
@@ -94,17 +78,6 @@ def process():
         En = Call.Energy(EnP, EnC, EnF)
         # ++++++++++++++++++++++++++++++++++++++++++++++
         return render_template('chart.html',V1=V1.sum(),V2=V2.sum(),V3=V3.sum(),En=En,EnP=EnP,EnC=EnC,EnF=EnF)
-
-@app.route("/test")
-def test():
-    return render_template('test.html')
-
-
-@app.route("/call", methods=['GET', 'POST'])
-def call():
-    select = request.form.get('select')
-    return(str(select))
-
 
 @app.route("/his")
 def his():
