@@ -1,0 +1,123 @@
+:root {
+  --input-padding-x: 1.5rem;
+  --input-padding-y: .75rem;
+}
+
+body {
+  background: #007bff;
+  background: linear-gradient(to right, #0062E6, #33AEFF);
+}
+
+.card-signin {
+  border: 0;
+  border-radius: 1rem;
+  box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+  background: #ffffff;
+}
+
+.card-signin .card-title {
+  margin-bottom: 2rem;
+  font-weight: 300;
+  font-size: 1.5rem;
+}
+
+.card-signin .card-body {
+  padding: 2rem;
+}
+
+.great {
+  background: #00ac98;
+  padding: 7px 15px;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 5px;
+  display: inline-block;
+  -moz-box-shadow: 2px 4px 5px 0 #ccc;
+  -webkit-box-shadow: 2px 4px 5px 0 #ccc;
+  box-shadow: 2px 4px 5px 0 #ccc;
+}
+
+input {
+  box-shadow: 0 0 5px 0 #BDBCB3;
+  border-radius: 5px;
+  color: rgb(114, 0, 245);
+  background: white;
+  border: 1px solid white;
+  height: 30px;
+  line-height: 30px;
+  font-size: 25px;
+  padding: 5px;
+}
+
+input:focus {
+  box-shadow: 0 0 5px 0 #5C22FF;
+  border-color: #5C22FF;
+}
+
+.boxed {
+  max-width: 980px;
+  padding: 0 10px;
+  margin: 0 auto;
+}
+
+.header {
+  padding: 150px 0;
+}
+
+.header p {
+  padding-top: 50px;
+}
+
+.main h3 {
+  margin: 50px 0 10px;
+}
+
+.main .flex .col {
+  width: 100%;
+  padding: 40px 0 100px;
+}
+
+.main .flex .col.c1 {
+  padding-right: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.main input {
+  display: inline-block;
+  width: 50px;
+  margin-right: 10px;
+}
+
+.footer {
+  padding: 50px 0;
+}
+
+/* css ของ my option */
+
+.text-white {
+  background: #8959d6;
+  padding: 3.5px 15px;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 5px;
+  display: inline-block;
+  -moz-box-shadow: 2px 4px 5px 0 #ccc;
+  -webkit-box-shadow: 2px 4px 5px 0 #ccc;
+  box-shadow: 2px 4px 5px 0 #ccc;
+}
+
+.text-white-1 {
+  background: #f14141;
+  padding: 4px 15px;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 5px;
+  display: inline-block;
+  -moz-box-shadow: 2px 4px 5px 0 #ccc;
+  -webkit-box-shadow: 2px 4px 5px 0 #ccc;
+  box-shadow: 2px 4px 5px 0 #ccc;
+}

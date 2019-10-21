@@ -21,6 +21,15 @@ mysql = MySQL(app)
 def index():
     return render_template('index.html')
 
+@app.route("/combine")
+def combine():
+    if request.method == 'GET':
+        food = sel.select_food('self')
+        datap = sel.select('p')
+        datac = sel.select('c')
+        dataf = sel.select('f')
+    return render_template('Combine.html', p=datap, c=datac, f=dataf, food=food)
+
 # Home Page
 @app.route("/home")
 def homepage(): 
@@ -47,7 +56,7 @@ def cal():
     return render_template('Calculatecalories.html', p=datap, c=datac, f=dataf, food=food)
 
 
-@app.route("/process", methods=['GET', 'POST'])
+@app.route("/process", methods=['POST'])
 def process():
     if request.method == 'POST':
         a = request.form.get('foodname', type=str)

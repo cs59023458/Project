@@ -1,0 +1,122 @@
+{% extends "layout.html" %}
+{% block title %}
+
+{% endblock %}
+
+{% block head %}
+<!-- mobile responsive meta -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="A simple range plugin written in pure JavaScript" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="{{ url_for('static',filename='css/css_range/st.css') }}" rel="stylesheet">
+<link href="{{ url_for('static',filename='css/css_range/style.css') }}" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+{% endblock %}
+
+{% block content %}
+<section class="pricing py-5">
+    <div class="container">
+        <div class="row">
+            <!-- Free Tier -->
+            <div class="col-lg-6">
+                <div class="card mb-5 mb-lg-0">
+                    <div class="card-body">
+                        <main class="main boxed">
+                            <div class="flex">
+                                <h4 class="great">โปรตีน</h4>
+                                <select class="text-white " name="P">
+                                    {% for row in p %}
+                                    <option value="{{row.0}}">{{row.1}}</option>
+                                    {% endfor %}
+                                </select>
+                                <div class="col c1">
+                                    <input type="text" id="example2" value="20" max="100" min="0" /><!-- step="1" -->
+                                </div>
+
+                                <h4 class="great">คาร์โบไฮเดรต</h4>
+                                <select class="text-white " name="C">
+                                    {% for row in c %}
+                                    <option value="{{row.0}}">{{row.1}}</option>
+                                    {% endfor %}
+                                </select>
+
+                                <div class="col c1">
+                                    <input type="text" id="example2-2" value="20" max="100" min="0" />
+                                </div>
+
+                                <h4 class="great">ไขมัน</h4>
+                                <select class="text-white " name="F">
+                                    {% for row in f %}
+                                    <option value=" {{row.0}}">{{row.1}}</option>
+                                    {% endfor %}
+                                </select>
+                                <div class="col c1">
+                                    <input type="text" id="example2-3" value="20" max="100" min="0" />
+                                </div>
+                            </div>
+                        </main>
+
+                    </div>
+                </div>
+            </div>
+            <!-- Plus Tier -->
+            <div class="col-lg-6">
+                <div class="card mb-5 mb-lg-0">
+                    <div class="card-body">
+                        <h3 class="card-title text-center">เลือกเมนู
+                            <select class="text-white-1" name="foodname">
+                                {% for row in food %}
+                                <option value="{{row.0}}">{{row.1}}</option>
+                                {% endfor %}
+                            </select>
+                        </h3>
+                        <h5 class="card-title text-center">พลังงานที่ได้รับ</h5>
+                        <div class="chart-wrapper" class="col-mx-auto">
+                            <canvas id="myChart"></canvas>
+                        </div>
+                        <hr>
+                        <div class="btn-toolbar justify-content-between" role="toolbar"
+                            aria-label="Toolbar with button groups">
+                            <button type="button" class="btn btn-info">คำนวณ</button>
+                            <button type="button" class="btn btn-success">บันทึก</button>
+                            <button type="button" class="btn btn-danger">จัดอาหาร🍱</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+{% block script %}
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+<script src="{{ url_for('static',filename='js/js_range/range.js') }}"></script>
+<script src="{{ url_for('static',filename='js/js_range/script.js') }}"></script>
+<!-- <script type="text/javascript" src="./js/tail.select.js"></script> -->
+<script>
+    rangejs(document.getElementById('example2'), { buttons: true, css: true });
+    rangejs(document.getElementById('example2-2'), { buttons: true, css: true });
+    rangejs(document.getElementById('example2-3'), { buttons: true, css: true });
+</script>
+<script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function () {
+        tail.select("select", { /* Your Options */ });
+    });
+</script>
+{% endblock %}
+
+{% endblock %}
