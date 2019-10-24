@@ -9,13 +9,29 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="A simple range plugin written in pure JavaScript" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="{{ url_for('static',filename='css/css_range/st.css') }}" rel="stylesheet">
-<link href="{{ url_for('static',filename='css/css_range/style.css') }}" rel="stylesheet">
+<link href="{{ url_for('static',filename='css/st.css') }}" rel="stylesheet">
+<link href="{{ url_for('static',filename='css/style.css') }}" rel="stylesheet">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
     integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#example2").click(function () {
+            $.ajax({
+                url: "/process",
+                type: "POST",
+                success: function (result) {
+                    //$("#div1").html(result);
+                    console.log(result);
+                    $("#myChart").val(result);
+                }
+            });
+        });
+    });
+</script>
 {% endblock %}
 
 {% block content %}
@@ -28,36 +44,37 @@
                     <div class="card-body">
                         <main class="main boxed">
                             <div class="flex">
-                                <h4 class="great">โปรตีน</h4>
-                                <select class="text-white " name="P">
-                                    {% for row in p %}
-                                    <option value="{{row.0}}">{{row.1}}</option>
-                                    {% endfor %}
-                                </select>
-                                <div class="col c1">
-                                    <input type="text" id="example2" value="20" max="100" min="0" /><!-- step="1" -->
-                                </div>
+                                    <h4 class="great">โปรตีน</h4>
+                                    <select class="text-white " name="P">
+                                        {% for row in p %}
+                                        <option value="{{row.0}}">{{row.1}}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <div class="col c1">
+                                        <input type="text" id="example2" value="20" max="100" min="0" />
+                                        <!-- step="1" -->
+                                    </div>
 
-                                <h4 class="great">คาร์โบไฮเดรต</h4>
-                                <select class="text-white " name="C">
-                                    {% for row in c %}
-                                    <option value="{{row.0}}">{{row.1}}</option>
-                                    {% endfor %}
-                                </select>
+                                    <h4 class="great">คาร์โบไฮเดรต</h4>
+                                    <select class="text-white " name="C">
+                                        {% for row in c %}
+                                        <option value="{{row.0}}">{{row.1}}</option>
+                                        {% endfor %}
+                                    </select>
 
-                                <div class="col c1">
-                                    <input type="text" id="example2-2" value="20" max="100" min="0" />
-                                </div>
+                                    <div class="col c1">
+                                        <input type="text" id="example2-2" value="20" max="100" min="0" />
+                                    </div>
 
-                                <h4 class="great">ไขมัน</h4>
-                                <select class="text-white " name="F">
-                                    {% for row in f %}
-                                    <option value=" {{row.0}}">{{row.1}}</option>
-                                    {% endfor %}
-                                </select>
-                                <div class="col c1">
-                                    <input type="text" id="example2-3" value="20" max="100" min="0" />
-                                </div>
+                                    <h4 class="great">ไขมัน</h4>
+                                    <select class="text-white " name="F">
+                                        {% for row in f %}
+                                        <option value=" {{row.0}}">{{row.1}}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <div class="col c1">
+                                        <input type="text" id="example2-3" value="20" max="100" min="0" />
+                                    </div>
                             </div>
                         </main>
 
@@ -104,8 +121,9 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
-<script src="{{ url_for('static',filename='js/js_range/range.js') }}"></script>
-<script src="{{ url_for('static',filename='js/js_range/script.js') }}"></script>
+<script src="{{ url_for('static',filename='js/range.js') }}"></script>
+<script src="{{ url_for('static',filename='js/script.js') }}"></script>
+<!-- <script type="text/javascript" src="{{ url_for('static',filename='js/tail.select.js') }}"></script> -->
 <!-- <script type="text/javascript" src="./js/tail.select.js"></script> -->
 <script>
     rangejs(document.getElementById('example2'), { buttons: true, css: true });
