@@ -1,5 +1,5 @@
 #Import
-import os   
+import os
 from app import app
 from flask import render_template, request, redirect, url_for, jsonify, session, make_response, json
 from flask_mysqldb import MySQL
