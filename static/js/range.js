@@ -1,5 +1,3 @@
-
-
  (function( win, doc ){
 
  	const _name = 'rangejs';

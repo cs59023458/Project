@@ -1,26 +1,36 @@
-#Import
+# Import
 import os
 from app import app
 from flask import render_template, request, redirect, url_for, jsonify, session, make_response, json
-from flask_mysqldb import MySQL
+from flask_session import Session
+from sqlalchemy import create_engine
+from sqlalchemy.orm import scoped_session, sessionmaker
 from forms import RegistrationForm, LoginForm
 from calculate import Nutrients, Call
 from sel import sel
 import numpy as np
+
+app.config["SESSION_PERMANENT"] = False
+app.config["SESSION_TYPE"] = "filesystem"
+Session(app)
+'''
+engine = create_engine(os.getenv("DATaBASE_URL"))
+db = scoped_session(sessionmaker(bind=engine))'''
 
 # Home Page
 @app.route("/")
 def index():
     return render_template('index.html')
 
+
 @app.route("/calculate")
 def calculate():
-    if request.method == 'GET':
-        food = sel.select_food('self')
-        datap = sel.select('p')
-        datac = sel.select('c')
-        dataf = sel.select('f')
+    food = sel.select_food('self')
+    datap = sel.select('p')
+    datac = sel.select('c')
+    dataf = sel.select('f')
     return render_template('calculatecalories.html', p=datap, c=datac, f=dataf, food=food)
+
 
 @app.route("/about")
 def about():
@@ -31,44 +41,63 @@ def about():
 def calendar():
     return render_template('calendar.html')
 
+
 @app.route("/process", methods=['POST'])
 def process():
-    if request.method == 'POST':
-        a = request.form.get('foodname', type=str)
-        name = sel.select_food_name(a)
-        pro = request.form.get('P', type=str)  # str
-        car = request.form.get('C')
-        fat = request.form.get('F')
-        # ปริมาณที่รับมาจาก slider ------------------------
-        volumep = int(request.form.get('volumep'))  # str
-        volumec = int(request.form.get('volumec'))
-        volumef = int(request.form.get('volumef'))
-        # ----------------------------------------------
-        # ปริมาณต่อ 100 g +++++++++++++++++++++++++++++++
-        P = list(sel.select_nutrients(pro))  # tuple
-        C = list(sel.select_nutrients(car))
-        F = list(sel.select_nutrients(fat))
-        # ++++++++++++++++++++++++++++++++++++++++++++++
-        # ปริมาณจริงของสารอาหารแต่ละตัว ####################
-        ValP = list(Call.Calculate(volumep, P))  # ปริมาณของ  p c f จริง
-        ValC = list(Call.Calculate(volumec, C))
-        ValF = list(Call.Calculate(volumef, F))
-        V1 = np.asanyarray(ValP)
-        V2 = np.asanyarray(ValC)
-        V3 = np.asanyarray(ValF)
-        ################################################
-        # พลังงานของสารอาหารแต่ละตัว ----------------------
-        EnP = Call.Total_Calculate(ValP)
-        EnC = Call.Total_Calculate(ValC)
-        EnF = Call.Total_Calculate(ValF)
-        E1 = EnP.sum()
-        E2 = EnC.sum()
-        E3 = EnF.sum()
-        # ----------------------------------------------
-        # พลังงานทั้งหมด +++++++++++++++++++++++++++++++++
-        En = Call.Energy(EnP, EnC, EnF)
-        # ++++++++++++++++++++++++++++++++++++++++++++++
-        return jsonify({'data': render_template('calculatecalories.html',V1=V1.sum(),V2=V2.sum(),V3=V3.sum(),En=En,EnP=EnP,EnC=EnC,EnF=EnF)})
+    a = request.form['a']
+    name = sel.select_food_name(a)
+    pro = request.form['pro']
+    car = request.form['car']
+    fat = request.form['fat']
+    # ปริมาณที่รับมาจาก slider ------------------------
+    volumep = request.form['volumep']  # str
+    volumec = request.form['volumec']
+    volumef = request.form['volumef']
+    volp = float(volumep)
+    volc = float(volumec)
+    volf = float(volumef)
+    # ----------------------------------------------
+    # ปริมาณต่อ 100 g +++++++++++++++++++++++++++++++
+    P = sel.select_nutrients(pro)
+    C = sel.select_nutrients(car)
+    F = sel.select_nutrients(fat)
+    # ++++++++++++++++++++++++++++++++++++++++++++++
+    # ปริมาณจริงของสารอาหารแต่ละตัว ####################
+    #ValP = Call.Calculate(volp, P)  # ปริมาณของ  p c f จริง
+    #ValC = Call.Calculate(volc, C)
+    #ValF = Call.Calculate(volf, F)
+    #print(b)
+    #print(type(b))
+    print(P)
+    print(type(P))
+    return jsonify({
+        "a": a, "pro": pro, "car": car, "fat": fat
+    })
+'''    
+    # ปริมาณจริงของสารอาหารแต่ละตัว ####################
+    ValP = list(Call.Calculate(volumep, P))  # ปริมาณของ  p c f จริง
+    ValC = list(Call.Calculate(volumec, C))
+    ValF = list(Call.Calculate(volumef, F))
+    V1 = np.asanyarray(ValP)
+    V2 = np.asanyarray(ValC)
+    V3 = np.asanyarray(ValF)
+    ################################################
+    # พลังงานของสารอาหารแต่ละตัว ----------------------
+    EnP = Call.Total_Calculate(ValP)
+    EnC = Call.Total_Calculate(ValC)
+    EnF = Call.Total_Calculate(ValF)
+    E1 = EnP.sum()
+    E2 = EnC.sum()
+    E3 = EnF.sum()
+    # ----------------------------------------------
+    # พลังงานทั้งหมด +++++++++++++++++++++++++++++++++
+    En = Call.Energy(EnP, EnC, EnF)
+    # ++++++++++++++++++++++++++++++++++++++++++++++
+    V1 = V1.sum()
+    V2 = V2.sum()
+    V3 = V3.sum()
+    return jsonify({'V1': 'V1', 'V2': 'V2', 'V3': 'V3', 'EnP': 'EnP', 'EnC': 'EnC', 'EnF': 'EnF', 'En': 'En'})'''
+
 
 @app.route("/his")
 def his():
@@ -77,7 +106,7 @@ def his():
 
 
 '''
-#Calculate
+# Calculate
 @app.route("/calculate")
 def calculate():
     with conn1:
@@ -105,17 +134,17 @@ def calculate():
         row = cur.fetchall()
     return render_template('cal.html',data=row,datap=rowsp,datac=rowsc,dataf=rowsf)
 
-#Table
+# Table
 @app.route("/table")
 def table():
     return render_template('table.html')
 
-#add data member page
+# add data member page
 @app.route("/member")
 def addmember():
     return render_template('add_member.html',)
 
-#Manage Accounts Page
+# Manage Accounts Page
 @app.route("/manage")
 def manage():
     with conn:
@@ -124,7 +153,7 @@ def manage():
         rows = cur.fetchall()
     return render_template('manage.html',datas=rows)
 
-#Delete Data Function Manage
+# Delete Data Function Manage
 @app.route("/delete/<string:id_data>",methods=['GET'])
 def delete(id_data):
     with conn:
@@ -133,7 +162,7 @@ def delete(id_data):
         conn.commit()
     return redirect(url_for('manage'))
 
-#Update Data Function Manage
+# Update Data Function Manage
 @app.route("/update",methods=['POST'])
 def update():
     if request.method=="POST":
@@ -147,7 +176,7 @@ def update():
             conn.commit()
         return redirect(url_for('manage'))
 
-#Insert Member Data
+# Insert Member Data
 @app.route("/insert",methods=['POST'])
 def insert():
     if request.method=="POST":
@@ -160,7 +189,7 @@ def insert():
             conn.commit()
         return redirect(url_for('manage'))    
 
-#Show Foods Page
+# Show Foods Page
 
 @app.route("/foods")
 def showfood():
@@ -175,7 +204,7 @@ def showfood():
         rows = cur.fetchall()
     return render_template('foods.html',data=rows)
 
-#Show Ingedients 
+# Show Ingedients 
 @app.route("/showingedients")
 def showingedients():
     with conn1:
@@ -185,13 +214,13 @@ def showingedients():
         rows = cur.fetchall()
     return render_template('ingedients.html', data_in=rows, title='Ingedients')
 
-#Add Ingedients Page
+# Add Ingedients Page
 @app.route("/showingedients/ingedients")
 def addIngedients():
     return render_template('add_ingedients.html')
 
 
-#Insert Ingedients Data
+# Insert Ingedients Data
 @app.route("/insert_ingedients",methods=['POST'])
 def insert_ingedients():
     if request.method=="POST":

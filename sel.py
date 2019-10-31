@@ -1,5 +1,6 @@
 import pymysql
 from db_config import mysql
+import json
 
 class sel:
 
@@ -22,6 +23,7 @@ class sel:
         cursor = conn.cursor(pymysql.cursors.DictCursor)
         cursor.execute("SELECT protein_nutrients,carbohydrate_nutrients,fat_nutrients FROM nutrients WHERE id_nutrients = %s"%(self))
         data = cursor.fetchall()
+        return data
 
     def select_food_name(self):
         conn = mysql.connect()
