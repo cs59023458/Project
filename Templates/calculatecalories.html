@@ -12,10 +12,9 @@
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
         integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 </head>
 
-<body>
+<body id="A">
     <div class="container">
         <div class="card border-0 shadow my-5">
             <div class="card-body p-7">
@@ -123,22 +122,18 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <script src="{{ url_for('static',filename='js/range.js') }}"></script>
-    <script src="{{ url_for('static',filename='js/script.js') }}"></script>
     <!-- <script type="text/javascript" src="./js/tail.select.js"></script> -->
     <script>
         rangejs(document.getElementById('example2'), { buttons: true, css: true });
         rangejs(document.getElementById('example2-2'), { buttons: true, css: true });
         rangejs(document.getElementById('example2-3'), { buttons: true, css: true });
     </script>
-    <script type="text/javascript">
-        document.addEventListener("DOMContentLoaded", function () {
-            tail.select("select", { /* Your Options */ });
-        });
-    </script>
     <script>
+        var datas;
         $(document).ready(function () {
-            $("form").click(function () {
+            $("body").click(function () {
                 $.ajax({
                     url: "/process",
                     type: "POST",
@@ -152,13 +147,15 @@
                         volumef: $("#example2-3").val()
                     },
                     success: function (data) {
-                        console.log(data);
-                    }
+                        datas = data;
+                        console.log(datas);
+                        chartrun(datas.pro, datas.car, datas.fat);
+                    },
                 });
             });
         });
     </script>
+    <script src="{{ url_for('static',filename='js/script1.js') }}"></script>
 </body>
 
 </html>
-

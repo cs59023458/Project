@@ -9,6 +9,7 @@ from forms import RegistrationForm, LoginForm
 from calculate import Nutrients, Call
 from sel import sel
 import numpy as np
+import math
 
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
@@ -63,21 +64,9 @@ def process():
     F = sel.select_nutrients(fat)
     # ++++++++++++++++++++++++++++++++++++++++++++++
     # ปริมาณจริงของสารอาหารแต่ละตัว ####################
-    #ValP = Call.Calculate(volp, P)  # ปริมาณของ  p c f จริง
-    #ValC = Call.Calculate(volc, C)
-    #ValF = Call.Calculate(volf, F)
-    #print(b)
-    #print(type(b))
-    print(P)
-    print(type(P))
-    return jsonify({
-        "a": a, "pro": pro, "car": car, "fat": fat
-    })
-'''    
-    # ปริมาณจริงของสารอาหารแต่ละตัว ####################
-    ValP = list(Call.Calculate(volumep, P))  # ปริมาณของ  p c f จริง
-    ValC = list(Call.Calculate(volumec, C))
-    ValF = list(Call.Calculate(volumef, F))
+    ValP = Call.Calculate(volp, P)  # ปริมาณของ  p c f จริง
+    ValC = Call.Calculate(volc, C)
+    ValF = Call.Calculate(volf, F)
     V1 = np.asanyarray(ValP)
     V2 = np.asanyarray(ValC)
     V3 = np.asanyarray(ValF)
@@ -86,17 +75,15 @@ def process():
     EnP = Call.Total_Calculate(ValP)
     EnC = Call.Total_Calculate(ValC)
     EnF = Call.Total_Calculate(ValF)
-    E1 = EnP.sum()
-    E2 = EnC.sum()
-    E3 = EnF.sum()
+    E1 = math.ceil(EnP.sum())
+    E2 = math.ceil(EnC.sum())
+    E3 = math.ceil(EnF.sum())
     # ----------------------------------------------
     # พลังงานทั้งหมด +++++++++++++++++++++++++++++++++
     En = Call.Energy(EnP, EnC, EnF)
     # ++++++++++++++++++++++++++++++++++++++++++++++
-    V1 = V1.sum()
-    V2 = V2.sum()
-    V3 = V3.sum()
-    return jsonify({'V1': 'V1', 'V2': 'V2', 'V3': 'V3', 'EnP': 'EnP', 'EnC': 'EnC', 'EnF': 'EnF', 'En': 'En'})'''
+    return jsonify({"pro": E1, "car": E2, "fat": E3})
+# return jsonify({'V1': 'V1', 'V2': 'V2', 'V3': 'V3', 'EnP': 'EnP', 'EnC': 'EnC', 'EnF': 'EnF', 'En': 'En'})
 
 
 @app.route("/his")

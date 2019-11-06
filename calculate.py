@@ -6,9 +6,8 @@ class Nutrients:
 
     # Method
     def Calculate(self,val, n):
-        call = int(val)
         a = np.asarray(n)
-        Total = (a*call)/100
+        Total = (a*val)/100
         return Total
 
     def Energy(self, a, b, c):
