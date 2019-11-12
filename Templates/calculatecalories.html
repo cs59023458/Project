@@ -7,7 +7,6 @@
     <meta name="description" content="A simple range plugin written in pure JavaScript" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="{{ url_for('static',filename='css/st.css') }}" rel="stylesheet">
-    <!--<link href="{{ url_for('static',filename='css/s') }}" rel="stylesheet">>-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
@@ -42,7 +41,11 @@
                                                 aria-label="Toolbar with button groups">
 
                                                 <button type="button" class="btn btn-success">บันทึก</button>
-                                                <button type="button" class="btn btn-primary">จัดอาหาร</button>
+                                                <div id="en" class="alert alert-info" role="alert"></div>
+                                                <button type="button" class="btn btn-primary" data-toggle="modal"
+                                                    data-target="#myModal">
+                                                    จัดอาหาร
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
@@ -133,7 +136,7 @@
     <script>
         var datas;
         $(document).ready(function () {
-            $("body").click(function () {
+            $("html").click(function () {
                 $.ajax({
                     url: "/process",
                     type: "POST",
@@ -149,7 +152,11 @@
                     success: function (data) {
                         datas = data;
                         console.log(datas);
+                        //myChart.data.datasets[0].data[0] = datas.pro;
                         chartrun(datas.pro, datas.car, datas.fat);
+                        console.log(datas.En)
+                        $("#en").text(datas.En);
+                        //chartrun.reset();
                     },
                 });
             });

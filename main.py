@@ -1,7 +1,12 @@
 # Import
 import os
 from app import app
-from flask import render_template, request, redirect, url_for, jsonify, session, make_response, json
+from flask import render_template, request, redirect, url_for
+from flask import make_response, json, jsonify, session
+from flask_bootstrap import Bootstrap
+from flask_sqlalchemy import SQLAlchemy
+from flask_admin import Admin
+from flask_login import UserMixin
 from flask_session import Session
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
@@ -14,9 +19,9 @@ import math
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
-'''
-engine = create_engine(os.getenv("DATaBASE_URL"))
-db = scoped_session(sessionmaker(bind=engine))'''
+
+# engine = create_engine(os.getenv("DATaBASE_URL"))
+# db = scoped_session(sessionmaker(bind=engine))
 
 # Home Page
 @app.route("/")
@@ -80,16 +85,32 @@ def process():
     E3 = math.ceil(EnF.sum())
     # ----------------------------------------------
     # พลังงานทั้งหมด +++++++++++++++++++++++++++++++++
-    En = Call.Energy(EnP, EnC, EnF)
+    En = math.ceil(Call.Energy(EnP, EnC, EnF))
     # ++++++++++++++++++++++++++++++++++++++++++++++
-    return jsonify({"pro": E1, "car": E2, "fat": E3})
+    return jsonify({"pro": E1, "car": E2, "fat": E3, "En": En})
 # return jsonify({'V1': 'V1', 'V2': 'V2', 'V3': 'V3', 'EnP': 'EnP', 'EnC': 'EnC', 'EnF': 'EnF', 'En': 'En'})
+
+@app.route("/update",methods=['POST'])
+def update():
+    return redirect(url_for('calculate'))
+    
+@app.route("/add")#,methods=['POST'])
+def addfoodtable():
+    return render_template('addfoodtable.html')#redirect(url_for('calculate'))
 
 
 @app.route("/his")
 def his():
     food = sel.select_food('self')
     return render_template('his.html', foods=food)
+
+@app.route("/login", methods=['GET','POST'])
+def login():
+    if request.method == 'POST':
+        if request.form['password'] == 'password':
+            return redirect(url_for('home'))
+
+    return render_template('login.html')
 
 
 '''
