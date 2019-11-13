@@ -18,7 +18,8 @@ class sel:
 
     def select_nutrients(self):
         cur = mysql.connection.cursor()
-        cur.execute("SELECT protein_nutrients,carbohydrate_nutrients,fat_nutrients FROM nutrients WHERE id_nutrients = %s" % (self))
+        cur.execute(
+            "SELECT protein_nutrients,carbohydrate_nutrients,fat_nutrients FROM nutrients WHERE id_nutrients = %s" % (self))
         row = cur.fetchone()
         data = []
         data.append(row['protein_nutrients'])
@@ -32,6 +33,17 @@ class sel:
         data = cur.fetchall()
         return data
 
-    # def insert():
-     #   cur = mysql.connection.cursor()
-      #  cur.execute("INSERT INTO `member` (`fname`,`lname`,`phone`) values(%s,%s,%s)")
+    def select_food_name_a(self):
+        cur = mysql.connection.cursor()
+        cur.execute("SELECT name_food FROM Food WHERE id_food = %s" % (self))
+        row = cur.fetchone()
+        data = row['name_food']
+        return data
+
+    def select_food_name_b(self):
+        cur = mysql.connection.cursor()
+        cur.execute("SELECT name_nutrients FROM Nutrients WHERE id_nutrients = %s" % (self))
+        row = cur.fetchone()
+        data = row['name_nutrients']
+        return data
+    

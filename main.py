@@ -13,6 +13,7 @@ from sqlalchemy.orm import scoped_session, sessionmaker
 from forms import RegistrationForm, LoginForm
 from calculate import Nutrients, Call
 from sel import sel
+from insertdata import ad
 import numpy as np
 import math
 
@@ -72,31 +73,69 @@ def process():
     ValP = Call.Calculate(volp, P)  # ปริมาณของ  p c f จริง
     ValC = Call.Calculate(volc, C)
     ValF = Call.Calculate(volf, F)
-    V1 = np.asanyarray(ValP)
-    V2 = np.asanyarray(ValC)
-    V3 = np.asanyarray(ValF)
     ################################################
     # พลังงานของสารอาหารแต่ละตัว ----------------------
     EnP = Call.Total_Calculate(ValP)
     EnC = Call.Total_Calculate(ValC)
     EnF = Call.Total_Calculate(ValF)
+    # พลังงานของรวมของ P C F ในแต่ละตัว
     E1 = math.ceil(EnP.sum())
     E2 = math.ceil(EnC.sum())
     E3 = math.ceil(EnF.sum())
     # ----------------------------------------------
     # พลังงานทั้งหมด +++++++++++++++++++++++++++++++++
-    En = math.ceil(Call.Energy(EnP, EnC, EnF))
+    En = math.ceil(Call.Energy(EnP, EnC, EnF))  # เก็บลง databasc
     # ++++++++++++++++++++++++++++++++++++++++++++++
     return jsonify({"pro": E1, "car": E2, "fat": E3, "En": En})
 # return jsonify({'V1': 'V1', 'V2': 'V2', 'V3': 'V3', 'EnP': 'EnP', 'EnC': 'EnC', 'EnF': 'EnF', 'En': 'En'})
 
-@app.route("/update",methods=['POST'])
-def update():
-    return redirect(url_for('calculate'))
-    
-@app.route("/add")#,methods=['POST'])
-def addfoodtable():
-    return render_template('addfoodtable.html')#redirect(url_for('calculate'))
+@app.route("/addfood", methods=['POST'])
+def addfood():
+    a = request.form['a']
+    pro = request.form['pro']
+    car = request.form['car']
+    fat = request.form['fat']
+    name1 = sel.select_food_name_a(a)
+    name2 = sel.select_food_name_b(pro)
+    name3 = sel.select_food_name_b(car)
+    name4 = sel.select_food_name_b(fat)
+    name5 = name3+name1+name2+name4
+    # ปริมาณที่รับมาจาก slider ------------------------
+    volumep = request.form['volumep']  # str
+    volumec = request.form['volumec']
+    volumef = request.form['volumef']
+    volp = float(volumep)
+    volc = float(volumec)
+    volf = float(volumef)
+    # ----------------------------------------------
+    # ปริมาณต่อ 100 g +++++++++++++++++++++++++++++++
+    P = sel.select_nutrients(pro)
+    C = sel.select_nutrients(car)
+    F = sel.select_nutrients(fat)
+    # ++++++++++++++++++++++++++++++++++++++++++++++
+    # ปริมาณจริงของสารอาหารแต่ละตัว ####################
+    ValP = Call.Calculate(volp, P)  # ปริมาณของ  p c f จริง
+    ValC = Call.Calculate(volc, C)
+    ValF = Call.Calculate(volf, F)
+    ################################################
+    # พลังงานของสารอาหารแต่ละตัว ----------------------
+    EnP = Call.Total_Calculate(ValP)
+    EnC = Call.Total_Calculate(ValC)
+    EnF = Call.Total_Calculate(ValF)
+    # พลังงานของรวมของ P C F ในแต่ละตัว
+    E1 = math.ceil(EnP.sum())
+    E2 = math.ceil(EnC.sum())
+    E3 = math.ceil(EnF.sum())
+    # ----------------------------------------------
+    # พลังงานทั้งหมด +++++++++++++++++++++++++++++++++
+    En = math.ceil(Call.Energy(EnP, EnC, EnF))  # เก็บลง databasc
+    # ++++++++++++++++++++++++++++++++++++++++++++++
+    ad.addfood(name5,ValP,ValC,ValC,EnP,EnC,EnF,E1,E2,E3,En)
+    return jsonify({"A": "Add Food"})
+
+@app.route("/foodtable")
+def fkoodtable():
+    return render_template('foodtable.html')
 
 
 @app.route("/his")
@@ -104,13 +143,20 @@ def his():
     food = sel.select_food('self')
     return render_template('his.html', foods=food)
 
-@app.route("/login", methods=['GET','POST'])
+
+@app.route("/login", methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
+        E = request.form['email']
         if request.form['password'] == 'password':
             return redirect(url_for('home'))
 
     return render_template('login.html')
+
+
+@app.route("/register", methods=['GET', 'POST'])
+def register():
+    return render_template('register.html')
 
 
 '''

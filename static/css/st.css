@@ -1,17 +1,4 @@
 
-.btn{
-  background-image: linear-gradient(to right, #92fe9d 0%);
-	padding: 7px 15px;
-	color: #ffffff;
-	font-size: 18px;
-	font-weight: 600;
-	border-radius: 5px;
-	display: inline-block;
-	-moz-box-shadow:    2px 4px 5px 0 #ccc;
-  	-webkit-box-shadow: 2px 4px 5px 0 #ccc;
-  	box-shadow:         2px 4px 5px 0 #ccc;
-
-}
 .pricing .card {
   border: none;
   border-radius: 1rem;
@@ -185,4 +172,40 @@ input:focus {
 	-moz-box-shadow:    2px 4px 5px 0 #ccc;
   	-webkit-box-shadow: 2px 4px 5px 0 #ccc;
   	box-shadow:         2px 4px 5px 0 #ccc;
+}
+.text-white-2{
+  background: rgb(255, 255, 255);
+	padding: 4px 15px;
+	color: #000000;
+	font-size: 18px;
+	font-weight: 600;
+	border-radius: 5px;
+	display: inline-block;
+	-moz-box-shadow:    2px 4px 5px 0 #ccc;
+  	-webkit-box-shadow: 2px 4px 5px 0 #ccc;
+  	box-shadow:         2px 4px 5px 0 #ccc;
+}
+.btn-1{
+  background-image: linear-gradient(to top, #4481eb 0%, #04befe 100%);
+	padding: 5px 13px;
+	color: #ffffff;
+	font-size: 15px;
+	font-weight: 500;
+	border-radius: 4px;
+	display: inline-block;
+	-moz-box-shadow:    2px 4px 5px 0 rgb(255, 255, 255);
+  	-webkit-box-shadow: 2px 4px 5px 0 rgb(255, 255, 255);
+  	box-shadow:         2px 4px 5px 0 rgb(255, 255, 255);
+}
+.btn-2{
+  background-image: linear-gradient(-60deg, #ff5858 0%, #f09819 100%);
+	padding: 5px 13px;
+	color: #ffffff;
+	font-size: 15px;
+	font-weight: 500;
+	border-radius: 4px;
+	display: inline-block;
+	-moz-box-shadow:    2px 4px 5px 0 rgb(255, 255, 255);
+  	-webkit-box-shadow: 2px 4px 5px 0 rgb(255, 255, 255);
+  	box-shadow:         2px 4px 5px 0 rgb(255, 255, 255);
 }

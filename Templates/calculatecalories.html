@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
 
 <head>
@@ -11,13 +11,15 @@
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
         integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
-<body id="A">
-    <div class="container">
-        <div class="card border-0 shadow my-5">
-            <div class="card-body p-7">
-                <form method="POST" role="form">
+<body>
+    <form method="POST" role="form">
+        <div class="container">
+            <div class="card border-0 shadow my-5">
+                <div class="card-body p-7">
                     <h3 class="card-title text-center">เลือกเมนู
                         <select class="text-white-1" name="foodname" id="foodname">
                             {% for row in food %}
@@ -37,21 +39,19 @@
                                                 <canvas id="myChart" width="250" height="230"></canvas>
                                             </div>
                                             <hr>
-                                            <div class="btn-toolbar justify-content-between" role="toolbar"
+                                            <div class="btn-toolbar  justify-content-between" role="toolbar"
                                                 aria-label="Toolbar with button groups">
 
-                                                <button type="button" class="btn btn-success">บันทึก</button>
+                                                <button type="button" class="btn-1" id="addfood"><img
+                                                        src="https://img.icons8.com/color/48/000000/real-food-for-meals.png">เพิ่มเมนูโปรด</button>
                                                 <div id="en" class="alert alert-info" role="alert"></div>
-                                                <button type="button" class="btn btn-primary" data-toggle="modal"
-                                                    data-target="#myModal">
-                                                    จัดอาหาร
-                                                </button>
+                                                <button type="button" class="btn-2" id="foodtable"><img
+                                                        src="https://img.icons8.com/color/48/000000/food.png">จัดมื้ออาหาร</button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <!-- Pro Tier -->
-
                                 <!-- Free Tier -->
                                 <div class="col-lg-6">
                                     <div class="card mb-5 mb-lg-0">
@@ -68,11 +68,22 @@
                                                         </option>
                                                         {% endfor %}
                                                     </select>
+                                                    <select class="text-white-2 ">
+                                                        <option>กรัม
+                                                        </option>
+                                                        <option>กิโลกรัม
+                                                        </option>
+                                                        <option>ขีด
+                                                        </option>
+                                                        <option>ถ้วยตวง
+                                                        </option>
+                                                        <option>ช้อนโต๊ะ
+                                                        </option>
+                                                    </select>
                                                     <div class="col c1">
-                                                        <input type="text" id="example2" value="0" max="1000" min="0" />
+                                                        <input type="text" id="example2" value="100" max="1000" min="0">
                                                         <!-- step="1" -->
                                                     </div>
-
                                                     <h4 class="great">
                                                         คาร์โบไฮเดรต
                                                     </h4>
@@ -82,12 +93,22 @@
                                                         </option>
                                                         {% endfor %}
                                                     </select>
-
+                                                    <select class="text-white-2 ">
+                                                        <option>กรัม
+                                                        </option>
+                                                        <option>กิโลกรัม
+                                                        </option>
+                                                        <option>ขีด
+                                                        </option>
+                                                        <option>ถ้วยตวง
+                                                        </option>
+                                                        <option>ช้อนโต๊ะ
+                                                        </option>
+                                                    </select>
                                                     <div class="col c1">
-                                                        <input type="text" id="example2-2" value="0" max="1000"
-                                                            min="0" />
+                                                        <input type="text" id="example2-2" value="100" max="1000"
+                                                            min="0">
                                                     </div>
-
                                                     <h4 class="great">
                                                         ไขมัน
                                                     </h4>
@@ -97,9 +118,21 @@
                                                         </option>
                                                         {% endfor %}
                                                     </select>
+                                                    <select class="text-white-2 ">
+                                                        <option>กรัม
+                                                        </option>
+                                                        <option>กิโลกรัม
+                                                        </option>
+                                                        <option>ขีด
+                                                        </option>
+                                                        <option>ถ้วยตวง
+                                                        </option>
+                                                        <option>ช้อนโต๊ะ
+                                                        </option>
+                                                    </select>
                                                     <div class="col c1">
-                                                        <input type="text" id="example2-3" value="0" max="1000"
-                                                            min="0" />
+                                                        <input type="text" id="example2-3" value="100" max="1000"
+                                                            min="0">
                                                     </div>
                                                 </div>
                                             </main>
@@ -109,14 +142,10 @@
                             </div>
                         </div>
                     </section>
-                </form>
+                </div>
             </div>
         </div>
-    </div>
-    </div>
-    </div>
-    </div>
-
+    </form>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
@@ -125,7 +154,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <script src="{{ url_for('static',filename='js/range.js') }}"></script>
     <!-- <script type="text/javascript" src="./js/tail.select.js"></script> -->
     <script>
@@ -133,10 +161,11 @@
         rangejs(document.getElementById('example2-2'), { buttons: true, css: true });
         rangejs(document.getElementById('example2-3'), { buttons: true, css: true });
     </script>
+    
     <script>
         var datas;
         $(document).ready(function () {
-            $("html").click(function () {
+            $("#example2").change(function () {
                 $.ajax({
                     url: "/process",
                     type: "POST",
@@ -151,18 +180,67 @@
                     },
                     success: function (data) {
                         datas = data;
-                        console.log(datas);
+                        //console.log(datas);
                         //myChart.data.datasets[0].data[0] = datas.pro;
                         chartrun(datas.pro, datas.car, datas.fat);
-                        console.log(datas.En)
+                        //console.log(datas.En)
                         $("#en").text(datas.En);
                         //chartrun.reset();
+                    }
+                });
+            });
+            $("#example2-2").change(function () {
+                $.ajax({
+                    url: "/process",
+                    type: "POST",
+                    data: {
+                        a: $('#foodname').val(),
+                        pro: $("#P").val(),
+                        car: $("#C").val(),
+                        fat: $("#F").val(),
+                        volumep: $("#example2").val(),
+                        volumec: $("#example2-2").val(),
+                        volumef: $("#example2-3").val()
                     },
+                    success: function (data) {
+                        datas = data;
+                        //console.log(datas);
+                        //myChart.data.datasets[0].data[0] = datas.pro;
+                        chartrun(datas.pro, datas.car, datas.fat);
+                        //console.log(datas.En)
+                        $("#en").text(datas.En);
+                        //chartrun.reset();
+                    }
+                });
+            });
+            $("#example2-3").change(function () {
+                $.ajax({
+                    url: "/process",
+                    type: "POST",
+                    data: {
+                        a: $('#foodname').val(),
+                        pro: $("#P").val(),
+                        car: $("#C").val(),
+                        fat: $("#F").val(),
+                        volumep: $("#example2").val(),
+                        volumec: $("#example2-2").val(),
+                        volumef: $("#example2-3").val()
+                    },
+                    success: function (data) {
+                        datas = data;
+                        //console.log(datas);
+                        //myChart.data.datasets[0].data[0] = datas.pro;
+                        chartrun(datas.pro, datas.car, datas.fat);
+                        //console.log(datas.En)
+                        $("#en").text(datas.En);
+                        //chartrun.reset();
+                    }
                 });
             });
         });
     </script>
     <script src="{{ url_for('static',filename='js/script1.js') }}"></script>
+    <script src="{{ url_for('static',filename='js/addfood.js') }}"></script>
 </body>
 
 </html>
