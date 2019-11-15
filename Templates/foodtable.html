@@ -10,7 +10,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <!-- Custom fonts for this template-->
-    <link href="{{ url_for('static',filename='vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ url_for('static',filename='vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet"
+        type="text/css">
 
     <!-- Page level plugin CSS-->
     <link href="{{ url_for('static',filename='vendor/datatables/dataTables.bootstrap4.css') }}" rel="stylesheet">
@@ -34,9 +35,6 @@
 
                 </div>
             </section>
-
-
-
             <!-- DataTables Example -->
             <div class="card mb-3">
                 <div class="card-header">
@@ -57,117 +55,35 @@
                             </thead>
 
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>กระเพราไก่</td>
-                                    <td>430</td>
-
+                                {% for row in data %}
+                                <tr class="rowdata">
+                                    <td>{{row.calculate_id}}</td>
+                                    <td>{{row.calculate_name}}</td>
+                                    <td>{{row.en_all}}</td>
                                     <td>
                                         <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
                                             <div class="btn-group mr-2" role="group" aria-label="First group">
-                                                <button type="button" class="btn btn-info">เช้า</button>
+                                                <button type="button" class="btn btn-info" id="morning"
+                                                    value="1">เช้า</button>
 
                                             </div>
                                             <div class="btn-group mr-2" role="group" aria-label="Second group">
-                                                <button type="button" class="btn btn-success">เที่ยง</button>
+                                                <button type="button" class="btn btn-success" id="midday"
+                                                    value="2">เที่ยง</button>
 
                                             </div>
                                             <div class="btn-group" role="group" aria-label="Third group">
-                                                <button type="button" class="btn btn-warning">เย็น</button>
-                                            </div>
-                                        </div>
-                                    </td>
-
-
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>ข้าวข้าหมู</td>
-                                    <td>540</td>
-                                    <td>
-                                        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-                                            <div class="btn-group mr-2" role="group" aria-label="First group">
-                                                <button type="button" class="btn btn-info">เช้า</button>
-
-                                            </div>
-                                            <div class="btn-group mr-2" role="group" aria-label="Second group">
-                                                <button type="button" class="btn btn-success">เที่ยง</button>
-
-                                            </div>
-                                            <div class="btn-group" role="group" aria-label="Third group">
-                                                <button type="button" class="btn btn-warning">เย็น</button>
+                                                <button type="button" class="btn btn-warning" id="evening"
+                                                    value="3">เย็น</button>
                                             </div>
                                         </div>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>ข้าวหน้าไก่</td>
-                                    <td>450</td>
-                                    <td>
-                                        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-                                            <div class="btn-group mr-2" role="group" aria-label="First group">
-                                                <button type="button" class="btn btn-info">เช้า</button>
-
-                                            </div>
-                                            <div class="btn-group mr-2" role="group" aria-label="Second group">
-                                                <button type="button" class="btn btn-success">เที่ยง</button>
-
-                                            </div>
-                                            <div class="btn-group" role="group" aria-label="Third group">
-                                                <button type="button" class="btn btn-warning">เย็น</button>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>ข้าวหน้าไก่</td>
-                                    <td>450</td>
-                                    <td>
-                                        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-                                            <div class="btn-group mr-2" role="group" aria-label="First group">
-                                                <button type="button" class="btn btn-info">เช้า</button>
-
-                                            </div>
-                                            <div class="btn-group mr-2" role="group" aria-label="Second group">
-                                                <button type="button" class="btn btn-success">เที่ยง</button>
-
-                                            </div>
-                                            <div class="btn-group" role="group" aria-label="Third group">
-                                                <button type="button" class="btn btn-warning">เย็น</button>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td>5</td>
-                                    <td>ข้าวหน้าไก่</td>
-                                    <td>450</td>
-                                    <td>
-                                        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-                                            <div class="btn-group mr-2" role="group" aria-label="First group">
-                                                <button type="button" class="btn btn-info">เช้า</button>
-
-                                            </div>
-                                            <div class="btn-group mr-2" role="group" aria-label="Second group">
-                                                <button type="button" class="btn btn-success">เที่ยง</button>
-
-                                            </div>
-                                            <div class="btn-group" role="group" aria-label="Third group">
-                                                <button type="button" class="btn btn-warning">เย็น</button>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
+                                {% endfor %}
                             </tbody>
                         </table>
                     </div>
                 </div>
-
-
-
             </div>
         </div>
 
@@ -187,6 +103,74 @@
                 mindate: "today",
                 maxdate: new Date().fp_incr(14)
             });
+        </script>
+        <script>
+            $(document).ready(function () {
+                $("#dataTable").on('click', '#morning', function () {
+                    var currentRow = $(this).closest("tr");
+                    var col = currentRow.find("td:eq(0)").text();
+                    console.log(col);
+                    console.log($('#morning').val());
+                    $.ajax({
+                        url: "/processfoodtable",
+                        type: "POST",
+                        data: {
+                            meal: $('#morning').val(),
+                            idmeal: col
+                        },
+                        success: function (data) {
+                            //swal("สำเร็จ", "เพิ่มเมนูโปรดเรียบร้อย", "success");
+                            console.log(data.Meal)
+                            location.reload();
+                        }
+                    });
+                });
+            }),
+                $(document).ready(function () {
+                    $("#dataTable").on('click', '#midday', function () {
+                        var currentRow = $(this).closest("tr");
+                        var col = currentRow.find("td:eq(0)").text();
+                        console.log(col);
+                        console.log($('#midday').val());
+                        $.ajax({
+                            url: "/processfoodtable",
+                            type: "POST",
+                            data: {
+                                meal: $('#midday').val(),
+                                idmeal: col
+                            },
+                            success: function (data) {
+                                //swal("สำเร็จ", "เพิ่มเมนูโปรดเรียบร้อย", "success");
+                                console.log(data.Meal)
+                                location.reload();
+                            }
+                        });
+                    });
+                }),
+                $(document).ready(function () {
+                    $("#dataTable").on('click', '#evening', function () {
+                        var currentRow = $(this).closest("tr");
+                        var col = currentRow.find("td:eq(0)").text();
+                        console.log(col);
+                        console.log($('#evening').val());
+                        $.ajax({
+                            url: "/processfoodtable",
+                            type: "POST",
+                            data: {
+                                meal: $('#evening').val(),
+                                idmeal: col
+                            },
+                            success: function (data) {
+                                //swal("สำเร็จ", "เพิ่มเมนูโปรดเรียบร้อย", "success");
+                                console.log(data.Meal)
+                                location.reload();
+                            }
+                        });
+                    });
+                }),
+                $("#foodtable").click(function () {
+                    window.location.replace("http://localhost:8000/foodbasket");
+                });
         </script>
 
 

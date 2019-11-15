@@ -16,7 +16,4 @@ $("#addfood").click(function () {
             console.log(data.A)
         }
     })
-}),
-$("#foodtable").click(function () {
-    window.location.replace("http://localhost:8000/foodtable");
 });

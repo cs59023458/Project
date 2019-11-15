@@ -1,0 +1,248 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>NCE</title>
+    <meta name="description" content="A simple range plugin written in pure JavaScript" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="{{ url_for('static',filename='css/style-add.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="card border-0 shadow my-5">
+
+            <section>
+                <div class="card-body">
+
+                    <h4 class="great ">จัดมื้ออาหาร</h4>
+                    <img src="https://img.icons8.com/color/48/000000/calendar.png">
+                    <input class="calendario" value="today" id="exampleInput" data-date-format="y-m-d" />
+                    <br>
+
+
+                </div>
+            </section>
+
+
+            <section class="pricing py-5">
+                <div class="container">
+                    <div class="row">
+                        <!-- Free Tier -->
+                        <div class="col-lg-4">
+                            <div class="card mb-5 mb-lg-0">
+                                <div class="card-body">
+                                    <h5 class="card-title text-muted text-uppercase text-center"><img
+                                            src="https://img.icons8.com/color/48/000000/breakfast.png"></h5>
+                                    <h6 class="card-price text-center">มื้อเช้า</span></h6>
+
+                                    <table class="table table-striped" id="dataTable1">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">No</th>
+                                                <th scope="col">Menu</th>
+                                                <th scope="col">Kcal</th>
+                                                <th scope="col">Delete</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for row in data1 %}
+                                            <tr>
+                                                <th scope="row">{{row.calculate_id}}</th>
+                                                <td>{{row.calculate_name}}</td>
+                                                <td>{{row.en_all}}</td>
+                                                <td><button type="button" class="btn btn-link" id="del" value="0"><img
+                                                            src="https://img.icons8.com/color/48/000000/delete-forever.png"></button>
+                                                </td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                    <a href="/foodtable"
+                                        class="btn btn-block btn-primary text-uppercase">เพิ่มเมนูอาหารเช้า</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Plus Tier -->
+                        <div class="col-lg-4">
+                            <div class="card mb-5 mb-lg-0">
+                                <div class="card-body">
+                                    <h5 class="card-title text-muted text-uppercase text-center"><img
+                                            src="https://img.icons8.com/color/48/000000/lunch.png"></h5>
+                                    <h6 class="card-price text-center">มื้อเที่ยง</span></h6>
+                                    <table class="table table-striped" id="dataTable2">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">No</th>
+                                                <th scope="col">Menu</th>
+                                                <th scope="col">Kcal</th>
+                                                <th scope="col">Delete</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for row in data2 %}
+                                            <tr>
+                                                <th scope="row">{{row.calculate_id}}</th>
+                                                <td>{{row.calculate_name}}</td>
+                                                <td>{{row.en_all}}</td>
+                                                <td><button type="button" class="btn btn-link" id="del" value="0"><img
+                                                            src="https://img.icons8.com/color/48/000000/delete-forever.png"></button>
+                                                </td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+
+                                    <a href="/foodtable"
+                                        class="btn btn-block btn-primary text-uppercase">เพิ่มเมนูอาหารเที่ยง</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Pro Tier -->
+                        <div class="col-lg-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title text-muted text-uppercase text-center"><img
+                                            src="https://img.icons8.com/color/48/000000/dinner.png"></h5>
+                                    <h4 class="card-price text-center">มื้อเย็น</span></h4>
+                                    <table class="table table-striped" id="dataTable3">
+                                        <thead>
+                                            <tr class="rowdata">
+                                                <th scope="col">No</th>
+                                                <th scope="col">Menu</th>
+                                                <th scope="col">Kcal</th>
+                                                <th scope="col">Delete</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for row in data3 %}
+                                            <tr>
+                                                <th scope="row">{{row.calculate_id}}</th>
+                                                <td>{{row.calculate_name}}</td>
+                                                <td>{{row.en_all}}</td>
+                                                <td><button type="button" class="btn btn-link" id="del" value="0"><img
+                                                            src="https://img.icons8.com/color/48/000000/delete-forever.png"></button>
+                                                </td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+
+                                    <a href="/foodtable"
+                                        class="btn btn-block btn-primary text-uppercase">เพิ่มเมนูอาหารเย็น</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    </div>
+    </div>
+
+    <script src="{{ url_for('static',filename='vendor/jquery/jquery.min.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script>
+        $('.calendario').flatpickr({
+            mindate: "today",
+            maxdate: new Date().fp_incr(14)
+        }),
+        $(document).ready(function () {
+                $('.calendario').click(function(){
+                    $.ajax({
+                        url: "/foodbasket",
+                        type: "POST",
+                        data: {
+                            date: $('.calendario').val()
+                        },
+                        success: function (data) {
+                            console.log(data)
+                        }
+                    });
+                });
+            });
+        console.log($('#exampleInput').val());
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("#dataTable1").on('click', '#del', function () {
+                var currentRow = $(this).closest("tr");
+                var col = currentRow.find("th").text();
+                console.log(col);
+                console.log($('#del').val());
+                $.ajax({
+                    url: "/processfoodbasket",
+                    type: "POST",
+                    data: {
+                        meal: $('#del').val(),
+                        idmeal: col
+                    },
+                    success: function (data) {
+                        //swal("สำเร็จ", "เพิ่มเมนูโปรดเรียบร้อย", "success");
+                        console.log(data.Meal)
+                        location.reload();
+                    }
+                });
+            });
+        }),
+        $(document).ready(function () {
+            $("#dataTable2").on('click', '#del', function () {
+                var currentRow = $(this).closest("tr");
+                var col = currentRow.find("th").text();
+                console.log(col);
+                console.log($('#del').val());
+                $.ajax({
+                    url: "/processfoodbasket",
+                    type: "POST",
+                    data: {
+                        meal: $('#del').val(),
+                        idmeal: col
+                    },
+                    success: function (data) {
+                        //swal("สำเร็จ", "เพิ่มเมนูโปรดเรียบร้อย", "success");
+                        console.log(data.Meal)
+                        location.reload();
+                    }
+                });
+            });
+        }),
+        $(document).ready(function () {
+            $("#dataTable3").on('click', '#del', function () {
+                var currentRow = $(this).closest("tr");
+                var col = currentRow.find("th").text();
+                console.log(col);
+                console.log($('#del').val());
+                $.ajax({
+                    url: "/processfoodbasket",
+                    type: "POST",
+                    data: {
+                        meal: $('#del').val(),
+                        idmeal: col
+                    },
+                    success: function (data) {
+                        //swal("สำเร็จ", "เพิ่มเมนูโปรดเรียบร้อย", "success");
+                        console.log(data.Meal)
+                        location.reload();
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+
+</html>

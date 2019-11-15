@@ -44,7 +44,7 @@
 
                                                 <button type="button" class="btn-1" id="addfood"><img
                                                         src="https://img.icons8.com/color/48/000000/real-food-for-meals.png">เพิ่มเมนูโปรด</button>
-                                                <div id="en" class="alert alert-info" role="alert"></div>
+                                                <div id="en" class="alert alert-dark" role="alert">0</div>
                                                 <button type="button" class="btn-2" id="foodtable"><img
                                                         src="https://img.icons8.com/color/48/000000/food.png">จัดมื้ออาหาร</button>
                                             </div>
@@ -161,7 +161,7 @@
         rangejs(document.getElementById('example2-2'), { buttons: true, css: true });
         rangejs(document.getElementById('example2-3'), { buttons: true, css: true });
     </script>
-    
+
     <script>
         var datas;
         $(document).ready(function () {
@@ -180,12 +180,15 @@
                     },
                     success: function (data) {
                         datas = data;
-                        //console.log(datas);
-                        //myChart.data.datasets[0].data[0] = datas.pro;
                         chartrun(datas.pro, datas.car, datas.fat);
-                        //console.log(datas.En)
                         $("#en").text(datas.En);
-                        //chartrun.reset();
+                        en = datas.En
+                        if (en < 3000) {
+                            $("#en").css("color", "green");
+                        }
+                        if (en > 3000) {
+                            $("#en").css("color", "red");
+                        }
                     }
                 });
             });
@@ -204,12 +207,15 @@
                     },
                     success: function (data) {
                         datas = data;
-                        //console.log(datas);
-                        //myChart.data.datasets[0].data[0] = datas.pro;
                         chartrun(datas.pro, datas.car, datas.fat);
-                        //console.log(datas.En)
                         $("#en").text(datas.En);
-                        //chartrun.reset();
+                        en = datas.En
+                        if (en < 3000) {
+                            $("#en").css("color", "green");
+                        }
+                        if (en > 3000) {
+                            $("#en").css("color", "red");
+                        }
                     }
                 });
             });
@@ -228,15 +234,21 @@
                     },
                     success: function (data) {
                         datas = data;
-                        //console.log(datas);
-                        //myChart.data.datasets[0].data[0] = datas.pro;
                         chartrun(datas.pro, datas.car, datas.fat);
-                        //console.log(datas.En)
                         $("#en").text(datas.En);
-                        //chartrun.reset();
+                        en = datas.En
+                        if (en < 3000) {
+                            $("#en").css("color", "green");
+                        }
+                        if (en > 3000) {
+                            $("#en").css("color", "red");
+                        }
                     }
                 });
-            });
+            }),
+                $("#foodtable").click(function () {
+                    window.location.href = '/foodbasket';
+                });
         });
     </script>
     <script src="{{ url_for('static',filename='js/script1.js') }}"></script>

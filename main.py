@@ -78,6 +78,9 @@ def process():
     EnP = Call.Total_Calculate(ValP)
     EnC = Call.Total_Calculate(ValC)
     EnF = Call.Total_Calculate(ValF)
+    en1 = math.ceil(EnP[0]+EnC[0]+EnF[0])
+    en2 = math.ceil(EnP[1]+EnC[1]+EnF[1])
+    en3 = math.ceil(EnP[2]+EnC[2]+EnF[2])
     # พลังงานของรวมของ P C F ในแต่ละตัว
     E1 = math.ceil(EnP.sum())
     E2 = math.ceil(EnC.sum())
@@ -86,11 +89,14 @@ def process():
     # พลังงานทั้งหมด +++++++++++++++++++++++++++++++++
     En = math.ceil(Call.Energy(EnP, EnC, EnF))  # เก็บลง databasc
     # ++++++++++++++++++++++++++++++++++++++++++++++
-    return jsonify({"pro": E1, "car": E2, "fat": E3, "En": En})
+    return jsonify({"pro": en1, "car": en2, "fat": en3, "En": En})
+    # return jsonify({"pro": E1, "car": E2, "fat": E3, "En": En})
 # return jsonify({'V1': 'V1', 'V2': 'V2', 'V3': 'V3', 'EnP': 'EnP', 'EnC': 'EnC', 'EnF': 'EnF', 'En': 'En'})
+
 
 @app.route("/addfood", methods=['POST'])
 def addfood():
+    i = '0'
     a = request.form['a']
     pro = request.form['pro']
     car = request.form['car']
@@ -130,12 +136,46 @@ def addfood():
     # พลังงานทั้งหมด +++++++++++++++++++++++++++++++++
     En = math.ceil(Call.Energy(EnP, EnC, EnF))  # เก็บลง databasc
     # ++++++++++++++++++++++++++++++++++++++++++++++
-    ad.addfood(name5,ValP,ValC,ValC,EnP,EnC,EnF,E1,E2,E3,En)
+    ad.addfood(name5, ValP, ValC, ValC, EnP, EnC, EnF, E1, E2, E3, En, i)
     return jsonify({"A": "Add Food"})
 
+
 @app.route("/foodtable")
-def fkoodtable():
-    return render_template('foodtable.html')
+def foodtable():
+    i = '0'
+    foodtable = sel.select_food_table(i)
+    return render_template('foodtable.html', data=foodtable)
+
+
+@app.route("/processfoodtable", methods=['POST'])
+def processfoodtable():
+    meal = request.form['meal']
+    idmeal = request.form['idmeal']
+    ad.addmeal(meal, idmeal)
+    return jsonify({"Meal": "Done", "idmeal": "idmeal"})
+
+
+@app.route("/foodbasket")
+def foodbasket():
+    i = '1'
+    j = '2'
+    k = '3'
+    #date = request.form['exampleInput']
+    #print(date)
+    foodbasket1 = sel.select_food_table(i)
+    foodbasket2 = sel.select_food_table(j)
+    foodbasket3 = sel.select_food_table(k)
+    return render_template('foodbasket.html', data1=foodbasket1, data2=foodbasket2, data3=foodbasket3)
+
+
+@app.route("/processfoodbasket", methods=['POST'])
+def processfoodbasket():
+    meal = request.form['meal']
+    idmeal = request.form['idmeal']
+    print(meal)
+    print(idmeal)
+    ad.delmeal(meal, idmeal)
+    return jsonify({"Meal": "Done"})
 
 
 @app.route("/his")

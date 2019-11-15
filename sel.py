@@ -46,4 +46,10 @@ class sel:
         row = cur.fetchone()
         data = row['name_nutrients']
         return data
+
+    def select_food_table(self):
+        cur = mysql.connection.cursor()
+        cur.execute("SELECT calculate_id,calculate_name,en_all FROM Calculate  WHERE calculate_meal = %s"%(self))
+        row = cur.fetchall()
+        return row
     
